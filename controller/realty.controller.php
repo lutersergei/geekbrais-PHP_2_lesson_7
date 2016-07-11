@@ -162,7 +162,7 @@ class RealtyController
         }
         //Запрашиваем все значения из таблицы Недвижимость
 //        $time_start = microtime(true);
-//        for ($i=1; $i<50000; $i++)
+//        for ($i=1; $i<10000; $i++)
 //        {
 //            $hh = Realty::all();
 //        }

@@ -66,6 +66,7 @@ if (!isset($title))
                             <a href="index.php?cat=realty&view=index_and_add"><i class="fa fa-home fa-fw"></i>&nbsp; Объекты недвижимости</a>
                             <a href="index.php?cat=wall&view=index_and_add"><i class="fa fa-th-list fa-fw"></i>&nbsp; Материалы стен</a>
                             <a href="index.php?cat=realty_tags&view=index_and_add"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
+                            <a href="index.php?cat=users&view=index"><i class="fa fa-users fa-fw"></i>&nbsp; Пользователи</a>
                         </li>
 
                     </ul>

@@ -13,6 +13,7 @@ require_once('system/model.class.php');
 require_once('model/wall.model.php');
 require_once('model/realty.model.php');
 require_once ('model/realty_tags.model.php');
+require_once ('model/users.model.php');
 require_once ('functions.php');
 
 spl_autoload_register('class_autoload');
