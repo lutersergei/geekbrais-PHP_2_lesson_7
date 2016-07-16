@@ -125,6 +125,14 @@ class Model
             {
                 if (in_array($field,static::$fields))
                 {
+                    if (static::$field_types[$field] === 'int')
+                    {
+                        $value = (int) $value;
+                    }
+                    else
+                    {
+                        $value = mysqli_real_escape_string(self::get_db(), $value);
+                    }
 
                     $this->data[$field] = $value;
 
@@ -299,6 +307,14 @@ class Model
             }
             else
             {
+                if (static::$field_types[$k] === 'int')
+                {
+                    $v = (int) $v;
+                }
+                else
+                {
+                    $v = mysqli_real_escape_string(self::get_db(), $v);
+                }
                 $this->data[$k] = $v;
             }
         }
@@ -308,6 +324,7 @@ class Model
 
     public function one($id)
     {
+        $id = (int) $id;
         $query = "SELECT * FROM `".static::tableName()."` WHERE `id` = '{$id}'";
         $result = mysqli_query(self::get_db(),$query);
         if ($row = mysqli_fetch_assoc($result))

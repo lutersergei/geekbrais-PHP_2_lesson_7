@@ -13,23 +13,6 @@ class RealtyTagsController
         die('404');
     }
 
-    protected static function create_and_load($function, $id = NULL)
-    {
-        //Создание нового объекта и загрузка полей информацией из POST, выполнение функции из модели
-        $tag = new RealtyTags($id);
-        if (isset($_POST['title']))
-        {
-            $tag->title = $_POST['title'];
-        }
-        if ($tag->$function())
-        {
-            header("Location:index.php?cat=realty_tags&view=index_and_add");
-            die();
-        }
-        else return false;
-
-    }
-    
     
     public function realty_tags_index_and_add()
     {

@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: drKox
- * Date: 17.06.2016
- * Time: 17:10
- */
 
 require_once ('initial.php');
 //require_once ('database_connection.php'); //TODO DELETE
+require_once ('system/system.class.php');
 require_once ('system/helpers/array.helper.php');
 require_once('system/model.class.php');
 require_once('model/wall.model.php');
@@ -17,6 +12,8 @@ require_once ('model/users.model.php');
 require_once ('functions.php');
 
 spl_autoload_register('class_autoload');
+
+$system = new System();
 
 if (isset($_GET['cat']))
 {

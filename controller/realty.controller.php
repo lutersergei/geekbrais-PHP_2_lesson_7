@@ -11,7 +11,16 @@ class RealtyController
     {
         die("FUNCTION $name NOT FOUND");
     }
-    
+
+    public function __construct()
+    {
+        global $system;
+        if ($system->user->id === NULL)
+        {
+            header("Location:index.php?cat=auth&view=login");
+        }
+    }
+
     public function realty_edit()
     {
         if (isset($_GET['id']))

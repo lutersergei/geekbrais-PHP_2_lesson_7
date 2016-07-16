@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 07 2016 г., 10:26
+-- Время создания: Июл 11 2016 г., 15:43
 -- Версия сервера: 10.1.13-MariaDB
 -- Версия PHP: 5.6.20
 
@@ -42,10 +42,10 @@ CREATE TABLE `realty` (
 --
 
 INSERT INTO `realty` (`id`, `area`, `rooms`, `floor`, `adress`, `price`, `description`, `wall_id`) VALUES
-(15, 76, 4, 3, 'г. Красноярск, ул Объектов Недвижимости, 3', 15000000, 'Хороший дом', 1),
+(15, 76, 4, 3, 'г. Красноярск, ул Объектов Недвижимости, 3', 15000000, 'Хороший дом!', 1),
 (16, 56, 1, 19, 'г. Красноярск, проспект Лессона, 3', 3000000, 'Бедный дом', 3),
 (17, 27, 6, 2, 'г. Красноярск, переулок Пхпэшный, д 5, кв 6', 7501000, 'Дом как дом', 4),
-(32, 56, 2, 25, 'г. Красноярск, ул Высотная, 305', 8000000, 'Высокий дом', 1),
+(32, 59, 2, 25, 'г. Красноярск, ул Высотная, 305', 8000000, 'Высокий дом', 1),
 (40, 38, 1, 3, 'г. Красноярск, ул Мартынова, 66, 6', 2700000, 'Новый дом', 4),
 (41, 50, 2, 1, 'г. Красноярск, мкр. Покровка, 27', 1200000, 'Древний дом', 2);
 
@@ -66,9 +66,6 @@ CREATE TABLE `realty_tags` (
 --
 
 INSERT INTO `realty_tags` (`id`, `realty_id`, `tag_id`) VALUES
-(41, 15, 2),
-(42, 15, 6),
-(43, 15, 10),
 (45, 16, 16),
 (46, 16, 12),
 (47, 16, 15),
@@ -84,7 +81,11 @@ INSERT INTO `realty_tags` (`id`, `realty_id`, `tag_id`) VALUES
 (59, 41, 2),
 (62, 41, 15),
 (63, 32, 5),
-(64, 15, 5);
+(69, 15, 10),
+(72, 15, 2),
+(79, 40, 2),
+(80, 40, 13),
+(81, 40, 15);
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,7 @@ INSERT INTO `realty_tags` (`id`, `realty_id`, `tag_id`) VALUES
 --
 
 CREATE TABLE `tags` (
-  `tag_id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(31) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -101,7 +102,7 @@ CREATE TABLE `tags` (
 -- Дамп данных таблицы `tags`
 --
 
-INSERT INTO `tags` (`tag_id`, `title`) VALUES
+INSERT INTO `tags` (`id`, `title`) VALUES
 (2, 'Вторичка'),
 (5, 'Элитное'),
 (6, 'Метро'),
@@ -114,6 +115,27 @@ INSERT INTO `tags` (`tag_id`, `title`) VALUES
 (14, 'Новая планировка'),
 (15, 'Гостинка'),
 (16, 'Общежитие');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `salt` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `role` tinyint(3) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `salt`, `username`, `password`, `role`) VALUES
+(5, 'dTGH9hUyIyyanRQp6KuBlkIB5cdKOsfT', '111', '8eb296c8dc7731cc9d8094c9b84e4eef', 10);
 
 -- --------------------------------------------------------
 
@@ -132,12 +154,13 @@ CREATE TABLE `wall` (
 --
 
 INSERT INTO `wall` (`id`, `material`, `description`) VALUES
-(1, 'Кирпич', 'Описание, плюсы и минусы кирпичных стен'),
+(1, 'Кирпич', 'Описание, плюсы и минусы кирпичных ст'),
 (2, 'Дерево', 'Описание, плюсы и минусы деревянных стеudff'),
 (3, 'Панель', 'Описание, плюсы и минусы панельных сте'),
 (4, 'Монолит', 'Описание, плюсы и минусы монолитных сте'),
 (5, 'Блоки', 'Описание, плюсы и минусы блочных стен'),
-(6, 'Глина', 'Дешево и сердито. Подходит для теплых краев');
+(6, 'Глина', 'Дешево и сердито. Подходит для теплых краев'),
+(22, 'Сопля', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -162,8 +185,15 @@ ALTER TABLE `realty_tags`
 -- Индексы таблицы `tags`
 --
 ALTER TABLE `tags`
-  ADD PRIMARY KEY (`tag_id`) USING BTREE,
-  ADD KEY `tag_id` (`tag_id`);
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `tag_id` (`id`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Индексы таблицы `wall`
@@ -184,17 +214,22 @@ ALTER TABLE `realty`
 -- AUTO_INCREMENT для таблицы `realty_tags`
 --
 ALTER TABLE `realty_tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT для таблицы `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `tag_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `wall`
 --
 ALTER TABLE `wall`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -210,7 +245,7 @@ ALTER TABLE `realty`
 --
 ALTER TABLE `realty_tags`
   ADD CONSTRAINT `FK_realty_tags_realty` FOREIGN KEY (`realty_id`) REFERENCES `realty` (`id`),
-  ADD CONSTRAINT `FK_realty_tags_tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`);
+  ADD CONSTRAINT `FK_realty_tags_tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
