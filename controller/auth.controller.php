@@ -26,6 +26,7 @@ class AuthController extends Controller
                     if (isset($_SESSION['last_page']))
                     {
                         header("Location: {$_SESSION['last_page']}");
+                        unset($_SESSION['last_page']);
                         die();
                     }
                     header("Location: /");

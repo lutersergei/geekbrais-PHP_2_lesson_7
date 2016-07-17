@@ -15,7 +15,7 @@ $title="Просмотр материала - $material";
                         <li><a href="../index.php?cat=wall&view=index_and_add">Материалы стен</a></li>
                         <li class="active">Просмотр материала</li>
                     </ol>
-                    <h1 class="page-header">Lesson_6</h1>
+                    <h1 class="page-header">БД недвижимости</h1>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Просмотр записи

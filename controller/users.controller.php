@@ -8,8 +8,7 @@ class UsersController extends Controller
 
     public function __construct()
     {
-        global $system;
-        if ($system->user->id === NULL)
+        if (System::get_user()->id === NULL)
         {
             // запись в сессию страницы, с которой перешли на авторизацию
             $_SESSION['last_page'] = 'index.php?cat=users&view=index';

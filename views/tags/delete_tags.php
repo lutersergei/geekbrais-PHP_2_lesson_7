@@ -14,7 +14,7 @@ $title="Удаление тега - $tag_title";
                     <li><a href="index.php?cat=realty_tags&view=index_and_add">Список тегов</a></li>
                     <li class="active">Удаление тега</li>
                 </ol>
-                <h1 class="page-header">Lesson_6</h1>
+                <h1 class="page-header">БД недвижимости</h1>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Просмотр тега

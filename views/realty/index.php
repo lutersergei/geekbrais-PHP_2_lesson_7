@@ -11,7 +11,7 @@ $title="Агентство недвижимости";
                         <ol class="breadcrumb">
                             <li>Список недвижимости и добавление</li>
                         </ol>
-                        <h1 class="page-header">Lesson_6</h1>
+                        <h1 class="page-header">БД недвижимости</h1>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Недвижимость Красноярска

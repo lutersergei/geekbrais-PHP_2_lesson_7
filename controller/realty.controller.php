@@ -14,14 +14,9 @@ class RealtyController extends Controller
 
     public function __construct()
     {
-        global $system;
-        if ($system->user->id === NULL)
+        if (System::get_user()->id === NULL)
         {
-            $_SESSION['current_user'] = 'Гость';
-        }
-        else
-        {
-            $_SESSION['current_user'] = $system->user->username;
+            $_SESSION['username'] = 'Гость';
         }
     }
 

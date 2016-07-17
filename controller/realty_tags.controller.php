@@ -15,16 +15,11 @@ class RealtyTagsController extends Controller
 
     public function __construct()
     {
-        global $system;
-        if ($system->user->id === NULL)
+        if (System::get_user()->id === NULL)
         {
             // запись в сессию страницы, с которой перешли на авторизацию
             $_SESSION['last_page'] = 'index.php?cat=realty_tags&view=index_and_add';
             header("Location:index.php?cat=auth&view=login");
-        }
-        else
-        {
-            $_SESSION['current_user'] = $system->user->username;
         }
     }
 

@@ -9,17 +9,16 @@ class System
 {
     protected static $user;
 
-    public function __get($field)
+    public static function get_user()
     {
-        if ($field === 'user')
+        if (self::$user === NULL)
         {
-            if (self::$user === NULL)
-            {
-                self::$user = new Users();
-                self::$user->auth_flow();
+            self::$user = new Users();
+            self::$user->auth_flow();
+            self::$user->role = (int) self::$user->role;
 //                var_dump(self::$user->auth_flow());
-            }
-            return self::$user;
         }
+
+        return self::$user;
     }
 }

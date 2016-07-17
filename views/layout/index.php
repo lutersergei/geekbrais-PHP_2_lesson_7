@@ -10,9 +10,10 @@ if (!isset($title))
 {
     $title='Агентство Недвижимости';
 }
-$current_user = $_SESSION['current_user'];
+$current_user = $_SESSION['username'];
 //var_dump(); Вы зашли как:
 $action = "<a href=\"\">Войти</a>";
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

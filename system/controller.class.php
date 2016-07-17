@@ -8,6 +8,7 @@
 class Controller
 {
     protected $layout = 'index.php';
+
     public function render ($view_name, $data = [], $with_layout = true)
     {
         ob_start();

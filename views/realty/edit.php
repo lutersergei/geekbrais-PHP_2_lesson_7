@@ -19,7 +19,7 @@ $description = $realty->description;
                         <li><a href="index.php?cat=realty&view=index_and_add">Список недвижимости и добавление</a></li>
                         <li class="active">Изменение помещения</li>
                     </ol>
-                    <h1 class="page-header">Lesson_6</h1>
+                    <h1 class="page-header">БД недвижимости</h1>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Редактирование записи
