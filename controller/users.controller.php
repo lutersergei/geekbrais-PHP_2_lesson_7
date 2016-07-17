@@ -1,16 +1,27 @@
 <?php
-class UsersController
+class UsersController extends Controller
 {
   public function __call($name, $arguments)
   {
     die($name);
   }
 
+    public function __construct()
+    {
+        global $system;
+        if ($system->user->id === NULL)
+        {
+            // запись в сессию страницы, с которой перешли на авторизацию
+            $_SESSION['last_page'] = 'index.php?cat=users&view=index';
+            header("Location:index.php?cat=auth&view=login");
+        }
+    }
+
   public function users_index()
   {
     $users = Users::all();
 
-    return render("users/users_list", ['users' => $users]);
+    return $this->render("users/users_list", ['users' => $users]);
   }
 
   public function users_add()
@@ -38,6 +49,6 @@ class UsersController
           }
       }
     }
-    return render("users/users_add", []);
+    return $this->render("users/users_add", []);
   }
 }

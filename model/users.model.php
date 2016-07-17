@@ -13,6 +13,7 @@ class Users extends Model
         '' => []
     ];
 
+    protected static $is_guest = true;
     protected static $fields = array();
     protected static $field_types = array();
 
@@ -69,6 +70,7 @@ class Users extends Model
             $this->get_username($username);
             if ($this->password === $password)
             {
+                self::$is_guest = false;
                 return true;
             }
             else
@@ -91,6 +93,7 @@ class Users extends Model
                 {
                     $_SESSION['password'] = $_COOKIE['password'];
                     $_SESSION['username'] = $_COOKIE['username'];
+                    self::$is_guest = false;
                     return true;
                 }
                 else return false;
@@ -127,6 +130,7 @@ class Users extends Model
                 setcookie("username",$this->username,60*60*24);
                 setcookie("password",$this->password,60*60*24);
             }
+            self::$is_guest = false;
             return true;
         }
         else

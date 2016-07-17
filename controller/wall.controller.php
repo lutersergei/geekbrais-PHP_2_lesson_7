@@ -5,11 +5,22 @@
  * Date: 22.06.2016
  * Time: 11:41
  */
-class WallController
+class WallController extends Controller
 {
     function __call($name, $arguments)
     {
         die('404');
+    }
+
+    public function __construct()
+    {
+        global $system;
+        if ($system->user->id === NULL)
+        {
+            // запись в сессию страницы, с которой перешли на авторизацию
+            $_SESSION['last_page'] = 'index.php?cat=wall&view=index_and_add';
+            header("Location:index.php?cat=auth&view=login");
+        }
     }
 
     public function wall_edit()
@@ -46,7 +57,7 @@ class WallController
         //Получение информации об изменяемой записи для передачи в начальные значения
         $wall = new Wall($id);
 
-        return render("wall_types/edit_types", ['wall' => $wall]);
+        return $this->render("wall_types/edit_types", ['wall' => $wall]);
     }
 
     public function wall_delete()
@@ -84,7 +95,7 @@ class WallController
             }
         }
         $wall = new Wall($id);
-        return render("wall_types/delete_types", ['wall' => $wall]);
+        return $this->render("wall_types/delete_types", ['wall' => $wall]);
     }
 
     public function wall_preview()
@@ -99,7 +110,7 @@ class WallController
             die();
         }
         $wall = new Wall($id);
-        return render("wall_types/preview_types", ['wall' => $wall]);
+        return $this->render("wall_types/preview_types", ['wall' => $wall]);
     }
 
     public function wall_index_and_add()
@@ -124,6 +135,6 @@ class WallController
                 }
             }
         }
-        return render("wall_types/wall_types", ['walls' => $walls]);
+        return $this->render("wall_types/wall_types", ['walls' => $walls]);
     }
 }

@@ -10,6 +10,9 @@ if (!isset($title))
 {
     $title='Агентство Недвижимости';
 }
+$current_user = $_SESSION['current_user'];
+//var_dump(); Вы зашли как:
+$action = "<a href=\"\">Войти</a>";
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -56,6 +59,12 @@ if (!isset($title))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+            </div>
+            <div class="row">
+                <div class="col-md-pull-1  col-md-6 pull-right">
+                <p style="margin-top: 2em" class="text-right"> <?= $current_user ?> [<?=$action?>]</p>
+
+                </div>
             </div>
             <!-- /.navbar-header -->
 

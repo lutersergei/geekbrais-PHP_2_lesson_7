@@ -1,12 +1,17 @@
 <?php
 
-class AuthController
+class AuthController extends Controller
 {
     public function __call($name, $arguments)
     {
         die($name);
     }
-    
+
+    public function __construct()
+    {
+        $this->layout = 'auth.php';
+    }
+
     public function auth_login()
     {
         if (isset($_POST['action']))
@@ -18,6 +23,11 @@ class AuthController
                 $users = new Users();
                 if ($users->auth($username, $password))
                 {
+                    if (isset($_SESSION['last_page']))
+                    {
+                        header("Location: {$_SESSION['last_page']}");
+                        die();
+                    }
                     header("Location: /");
                     die();
                 }
@@ -28,6 +38,6 @@ class AuthController
                 }
             }
         }
-        return render("auth/login", []);
+        return $this->render("auth/login", []);
     }
 }

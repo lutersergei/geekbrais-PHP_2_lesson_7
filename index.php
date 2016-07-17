@@ -3,6 +3,7 @@
 require_once ('initial.php');
 //require_once ('database_connection.php'); //TODO DELETE
 require_once ('system/system.class.php');
+require_once ('system/controller.class.php');
 require_once ('system/helpers/array.helper.php');
 require_once('system/model.class.php');
 require_once('model/wall.model.php');

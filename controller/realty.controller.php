@@ -5,7 +5,7 @@
  * Date: 22.06.2016
  * Time: 11:40
  */
-class RealtyController
+class RealtyController extends Controller
 {
     public function __call($name, $arguments)
     {
@@ -17,7 +17,11 @@ class RealtyController
         global $system;
         if ($system->user->id === NULL)
         {
-            header("Location:index.php?cat=auth&view=login");
+            $_SESSION['current_user'] = 'Гость';
+        }
+        else
+        {
+            $_SESSION['current_user'] = $system->user->username;
         }
     }
 
@@ -94,7 +98,7 @@ class RealtyController
         //Получение всех связанных с квартирой тегов
         $relation_tags = RealtyTags::get_relation_tag($id);
 //        var_dump($relation_tags);
-        return render("realty/edit", ['realty' => $realty, 'wall' => $walls , 'relation_tags' => $relation_tags , 'tags' => $tags]); /*    , 'relation_tags' => $relation_tags , 'tags' => $tags  */
+        return $this->render("realty/edit", ['realty' => $realty, 'wall' => $walls , 'relation_tags' => $relation_tags , 'tags' => $tags]); /*    , 'relation_tags' => $relation_tags , 'tags' => $tags  */
     }
 
     public function realty_delete()
@@ -122,7 +126,7 @@ class RealtyController
         }
         $realty = new Realty($id);
 
-        return render("realty/delete", ['realty' => $realty]);
+        return $this->render("realty/delete", ['realty' => $realty]);
     }
 
     public function realty_preview()
@@ -141,7 +145,7 @@ class RealtyController
 
         $realty = new Realty($id);
         $relation_tags = RealtyTags::get_relation_tag($id);
-        return render("realty/preview", ['realty' => $realty, 'relation_tags' => $relation_tags ]);
+        return $this->render("realty/preview", ['realty' => $realty, 'relation_tags' => $relation_tags ]);
     }
 
 
@@ -183,7 +187,7 @@ class RealtyController
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
         $walls = ArrayHelper::index($walls, 'id');
-        return render("realty/index", ['realty' => $realty, 'wall' => $walls ]);
+        return $this->render("realty/index", ['realty' => $realty, 'wall' => $walls ]);
     }
     
     public function realty_group_by_wall()
@@ -230,7 +234,7 @@ class RealtyController
             }
             }
         }
-        return render("realty/index", ['realty' => $realty, 'walls' => $walls]);
+        return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls]);
     }
 
     public function realty_group_by_tag()
@@ -276,6 +280,6 @@ class RealtyController
                 }
             }
         }
-        return render("realty/index", ['realty' => $realty, 'walls' => $walls]);
+        return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls]);
     }
 }
