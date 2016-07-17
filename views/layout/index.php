@@ -59,6 +59,7 @@ $action = "<a href=\"\">Войти</a>";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="">Выйти</a>
             </div>
             <div class="row">
                 <div class="col-md-pull-1  col-md-6 pull-right">

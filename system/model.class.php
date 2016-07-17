@@ -15,6 +15,7 @@ class Model
     const OBJECT_ALREADY_EXIST = "{OBJECT_ALREADY_EXIST}";
     const CREATE_FAILED = "{CREATE_FAILED}";
     const DELETE_FAILED = "{DELETE_FAILED}";
+    const DUPLICATE_FIELD = "{DUPLICATE_FIELD}";
 
     protected static $errors = array(
         self::FIELD_NOT_EXIST,
@@ -23,7 +24,8 @@ class Model
         self::OBJECT_ALREADY_EXIST,
         self::UPDATE_FAILED,
         self::DELETE_FAILED,
-        self::CREATE_FAILED
+        self::CREATE_FAILED,
+        self::DUPLICATE_FIELD
     );
 
     protected static $behaviours = array();
@@ -359,7 +361,6 @@ class Model
         if ($this->id !== NULL) return self::OBJECT_ALREADY_EXIST;
         $query = "INSERT INTO `".static::tableName()."` (".static::fields_query().") VALUES (".$this->values_query().")";
         $result = mysqli_query(self::get_db(),$query);
-
         if ($result)
         {
             $this->data['id'] = mysqli_insert_id(self::get_db());
@@ -368,6 +369,8 @@ class Model
         }
         else
         {
+            $error = mysqli_errno(self::get_db());
+            if ($error == 1062) return self::DUPLICATE_FIELD;
             return self::CREATE_FAILED;
         }
     }

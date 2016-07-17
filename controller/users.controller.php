@@ -42,6 +42,10 @@ class UsersController extends Controller
               die($users::CREATE_FAILED); //TODO error page 404
 
           }
+          elseif ($users->add() === $users::DUPLICATE_FIELD)
+          {
+              die($users::DUPLICATE_FIELD); //TODO error page 404
+          }
           else
           {
               header('Location:index.php?cat=users&view=index');
