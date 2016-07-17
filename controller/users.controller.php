@@ -33,16 +33,8 @@ class UsersController extends Controller
           $users = new Users();
           $users->load(System::post());
           $users->create_password($password);
-          if ($users->add() === $users::CREATE_FAILED)
-          {
-              die($users::CREATE_FAILED); //TODO error page 404
-
-          }
-          elseif ($users->add() === $users::DUPLICATE_FIELD)
-          {
-              die($users::DUPLICATE_FIELD); //TODO error page 404
-          }
-          else
+          $result = $users->add();
+          if (System::create_message('add',$result))
           {
               header('Location:index.php?cat=users&view=index');
               die();

@@ -51,4 +51,90 @@ class System
             return $result;
         }
     }
+
+    public static function set_message($type, $message)
+    {
+        $_SESSION[$type] = $message;
+    }
+
+    public static function get_message($type)
+    {
+        if (isset($_SESSION[$type]))
+        {
+            $value =$_SESSION[$type];
+            unset($_SESSION[$type]);
+            return $value;
+        }
+        else
+        {
+             return NULL;
+        }
+    }
+
+    //  Генерирование сообщения на основе действия и регультата
+    public static function create_message($action, $result)
+    {
+        if ($result === true)
+        {
+            if ($action === 'add')
+            {
+                $message = 'Объект успешно добавлен';
+                static::set_message('success', $message);
+                return true;
+            }
+            if ($action === 'update')
+            {
+                $message = 'Редактирование успешно';
+                static::set_message('success', $message);
+                return true;
+            }
+            if ($action === 'delete')
+            {
+                $message = 'Объект успешно удален';
+                static::set_message('success', $message);
+                return true;
+            }
+            else return false;
+        }
+        else
+            {
+                if ($result === Model::CREATE_FAILED)
+                {
+                    $message = 'Ошибка при добавлении';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                if ($result === Model::DELETE_FAILED)
+                {
+                    $message = 'Ошибка при удалении';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                if ($result === Model::OBJECT_ALREADY_EXIST)
+                {
+                    $message = 'Объект уже существует';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                if ($result === Model::OBJECT_NOT_EXIST)
+                {
+                    $message = 'Объект не найден';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                if ($result === Model::UPDATE_FAILED)
+                {
+                    $message = 'Ошибка при редактировании';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                if ($result === false)
+                {
+                    $message = 'Ошибка';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                else return false;
+            }
+    }
 }

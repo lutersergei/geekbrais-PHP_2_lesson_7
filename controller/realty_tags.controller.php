@@ -31,14 +31,11 @@ class RealtyTagsController extends Controller
             {
                 $tag = new RealtyTags();
                 $tag->load(System::post());
-                if ($tag->add())
+                $result = $tag->add();
+                if (System::create_message('add',$result))
                 {
                     header("Location:index.php?cat=realty_tags&view=index_and_add");
                     die();
-                }
-                else
-                {
-                    die(ERROR_CREATE);
                 }
             }
         }
@@ -67,14 +64,11 @@ class RealtyTagsController extends Controller
                 $id = (int)  $_POST['id'];
                 $tag = new RealtyTags($id);
                 $tag->load(System::post());
-                if ($tag->update())
+                $result = $tag->update();
+                if (System::create_message('update',$result))
                 {
                     header("Location:index.php?cat=realty_tags&view=index_and_add");
                     die();
-                }
-                else
-                {
-                    die(ERROR_UPDATE);
                 }
             }
         }
@@ -100,14 +94,11 @@ class RealtyTagsController extends Controller
             {
                 $id = (int) $_POST['id'];
                 $tag = new RealtyTags($id);
-                if ($tag->delete())
+                $result = $tag->delete();
+                if (System::create_message('delete',$result))
                 {
                     header("Location:index.php?cat=realty_tags&view=index_and_add");
                     die();
-                }
-                else
-                {
-                    die(ERROR_DELETE);
                 }
             }
             else

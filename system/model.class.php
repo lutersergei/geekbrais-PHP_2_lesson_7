@@ -413,7 +413,7 @@ class Model
         }
         else
         {
-            return self::CREATE_FAILED;
+            return self::DELETE_FAILED;
         }
     }
 

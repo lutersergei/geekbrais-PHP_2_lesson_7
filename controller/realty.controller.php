@@ -40,11 +40,8 @@ class RealtyController extends Controller
                 $id = (int) $_POST['id'];
                 $realty = new Realty($id);
                 $realty->load(System::post());
-                if (!$realty->update())
-                {
-                    die(ERROR_UPDATE);
-                }
-                else
+                $result = $realty->update();
+                if (System::create_message('update',$result))
                 {
                     header("Location:index.php?cat=realty&view=index_and_add");
                     die();
@@ -105,10 +102,11 @@ class RealtyController extends Controller
             {
                 $id = (int) $_POST['id'];
                 $realty = new Realty($id);
-                if ($realty->delete()) {
-                    header('Location:index.php?cat=realty&view=index_and_add');
-                } else {
-                    die(ERROR_DELETE);
+                $result = $realty->delete();
+                if (System::create_message('delete',$result))
+                {
+                    header("Location:index.php?cat=realty&view=index_and_add");
+                    die();
                 }
             }
             else header('Location:index.php?cat=realty&view=index_and_add');
@@ -147,13 +145,11 @@ class RealtyController extends Controller
                 $realty = new Realty();
                 $realty->load(System::post());
                 $result = $realty->add();
-                if ($result)
+                if (System::create_message('add',$result))
                 {
-//                    var_dump($result);
                     header("Location:index.php?cat=realty&view=index_and_add");
                     die();
                 }
-                else die(ERROR_CREATE);
             }
         }
         //Запрашиваем все значения из таблицы Недвижимость
@@ -199,14 +195,11 @@ class RealtyController extends Controller
                 {
                     $realty = new Realty();
                     $realty->load(System::post());
-                    if (!$realty->add())
+                    $result = $realty->add();
+                    if (System::create_message('add',$result))
                     {
                         header("Location:index.php?cat=realty&view=index_and_add");
                         die();
-                    }
-                    else
-                    {
-                        die(ERROR_CREATE);
                     }
             }
             }
@@ -239,14 +232,11 @@ class RealtyController extends Controller
                 {
                     $realty = new Realty();
                     $realty->load(System::post());
-                    if (!$realty->add())
+                    $result = $realty->add();
+                    if (System::create_message('add',$result))
                     {
                         header("Location:index.php?cat=realty&view=index_and_add");
                         die();
-                    }
-                    else
-                    {
-                        die(ERROR_CREATE);
                     }
                 }
             }

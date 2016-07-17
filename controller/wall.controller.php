@@ -42,14 +42,11 @@ class WallController extends Controller
                 $id = (int)  $_POST['id'];
                 $wall = new Wall($id);
                 $wall->load(System::post());
-                if ($wall->update())
+                $result = $wall->update();
+                if (System::create_message('update',$result))
                 {
                     header('Location:index.php?cat=wall&view=index_and_add');
                     die();
-                }
-                else
-                {
-                    die(ERROR_UPDATE);
                 }
             }
         }
@@ -77,14 +74,11 @@ class WallController extends Controller
             {
                 $id = (int) $_POST['id'];
                 $wall = new Wall($id);
-                if ($wall->delete())
+                $result = $wall->delete();
+                if (System::create_message('delete',$result))
                 {
                     header('Location:index.php?cat=wall&view=index_and_add');
                     die();
-                }
-                else
-                {
-                    die(ERROR_DELETE);
                 }
             }
             else
@@ -121,12 +115,8 @@ class WallController extends Controller
             if ($_POST['__action'] === 'add') {
                 $wall = new Wall();
                 $wall->load(System::post());
-                if ($wall->add() === $wall::CREATE_FAILED)
-                {
-                    die($wall::CREATE_FAILED); //TODO error page 404
-
-                }
-                else
+                $result = $wall->add();
+                if (System::create_message('add',$result))
                 {
                     header('Location:index.php?cat=wall&view=index_and_add');
                     die();

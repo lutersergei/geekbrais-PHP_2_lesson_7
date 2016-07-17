@@ -10,10 +10,19 @@ if (!isset($title))
 {
     $title='Агентство Недвижимости';
 }
-$current_user = $_SESSION['username'];
-//var_dump(); Вы зашли как:
-$action = "<a href=\"\">Войти</a>";
-var_dump($_SESSION);
+$message = NULL;
+$success = System::get_message('success');
+if ($success !== NULL)
+{
+    $message = $success;
+    $message_style = 'success';
+}
+$error = System::get_message('error');
+if ($error !== NULL)
+{
+    $message = $error;
+    $message_style = 'danger';
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -48,6 +57,17 @@ var_dump($_SESSION);
 </head>
 
 <body>
+<?php
+if ($message !== NULL)
+{
+    ?>
+    <div class="alert alert-<?=$message_style?>">
+        <?=$message?>
+    </div>
+<?php
+}
+?>
+
 
     <div id="wrapper">
 
@@ -62,12 +82,6 @@ var_dump($_SESSION);
                 </button>
                 <a class="navbar-brand" href="">Выйти</a>
             </div>
-            <div class="row">
-                <div class="col-md-pull-1  col-md-6 pull-right">
-                <p style="margin-top: 2em" class="text-right"> <?= $current_user ?> [<?=$action?>]</p>
-
-                </div>
-            </div>
             <!-- /.navbar-header -->
 
             <div class="navbar-default sidebar" role="navigation">
@@ -79,11 +93,12 @@ var_dump($_SESSION);
                             <a href="index.php?cat=realty_tags&view=index_and_add"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
                             <a href="index.php?cat=users&view=index"><i class="fa fa-users fa-fw"></i>&nbsp; Пользователи</a>
                         </li>
-
                     </ul>
                 </div>
+
                 <!-- /.sidebar-collapse -->
             </div>
+
             <!-- /.navbar-static-side -->
         </nav>
 
