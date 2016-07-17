@@ -36,13 +36,12 @@ class WallController extends Controller
         }
 
 //Проверка на пост запрос об изменеии записи
-        if (isset($_POST['action'])) {
-            if ($_POST['action'] === 'edit')
+        if (isset($_POST['__action'])) {
+            if ($_POST['__action'] === 'edit')
             {
                 $id = (int)  $_POST['id'];
                 $wall = new Wall($id);
-                $wall->material = $_POST['material'];
-                $wall->description = $_POST['description'];
+                $wall->load(System::post());
                 if ($wall->update())
                 {
                     header('Location:index.php?cat=wall&view=index_and_add');
@@ -72,11 +71,11 @@ class WallController extends Controller
             die();
         }
 //Проверка на пост запрос об удалении записи
-        if (isset($_POST['action']))
+        if (isset($_POST['__action']))
         {
-            if (($_POST['action'] === 'delete'))
+            if (($_POST['__action'] === 'delete'))
             {
-                $id = (int)  $_POST['id'];
+                $id = (int) $_POST['id'];
                 $wall = new Wall($id);
                 if ($wall->delete())
                 {
@@ -118,11 +117,10 @@ class WallController extends Controller
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
         //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['action'])) {
-            if ($_POST['action'] === 'add') {
+        if (isset($_POST['__action'])) {
+            if ($_POST['__action'] === 'add') {
                 $wall = new Wall();
-                $wall->material = $_POST['material'];
-                $wall->description = $_POST['description'];
+                $wall->load(System::post());
                 if ($wall->add() === $wall::CREATE_FAILED)
                 {
                     die($wall::CREATE_FAILED); //TODO error page 404

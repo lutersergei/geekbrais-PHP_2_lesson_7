@@ -14,9 +14,9 @@ class AuthController extends Controller
 
     public function auth_login()
     {
-        if (isset($_POST['action']))
+        if (isset($_POST['__action']))
         {
-            if ($_POST['action'] === 'login')
+            if ($_POST['__action'] === 'login')
             {
                 $username = $_POST['username'];
                 $password = $_POST['password'];

@@ -9,6 +9,7 @@ $wall_material = $realty->wall->material;
 $area = $realty->area;
 $price = $realty->price;
 $description = $realty->description;
+//var_dump($realty);
 ?>
 
 <!-- Page Content -->

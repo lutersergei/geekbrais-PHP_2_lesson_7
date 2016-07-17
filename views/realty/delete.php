@@ -68,8 +68,8 @@ HTML;
                             <h3 class="text-center text-uppercase"><strong>Вы действительно хотите удалить данную запись?</strong></h3>
                             <div class="well center-block" style="max-width:250px">
                                 <input type="hidden" name="id" value="<?=$id?>">
-                                <button type="submit" name="action" value="decline" class="btn btn-default btn-lg btn-block"><i class="fa fa-undo fa-lg" aria-hidden="true"></i> Отмена</button>
-                                <button type="submit" name="action" value="delete" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Удалить</button>
+                                <button type="submit" name="__action" value="decline" class="btn btn-default btn-lg btn-block"><i class="fa fa-undo fa-lg" aria-hidden="true"></i> Отмена</button>
+                                <button type="submit" name="__action" value="delete" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Удалить</button>
                             </div>
                         </form>
                     </div>

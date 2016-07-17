@@ -30,7 +30,7 @@ $title="Авторизация";
                                 <div class="col-sm-push-4 col-sm-5 input-group" >
                                     <div class="row">
                                         <div class="col-lg-8 col-lg-pull-2 col-lg-push-2">
-                                            <input type="hidden" name="action" value="login">
+                                            <input type="hidden" name="__action" value="login">
                                             <button type="submit" class="btn btn-default btn-block"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Отправить</button>
                                             <a href="index.php" class="btn btn-default btn-block"><span class="fa fa-undo fa-lg" aria-hidden="true"></span> Назад</a>
                                         </div>

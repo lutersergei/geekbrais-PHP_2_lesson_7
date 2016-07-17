@@ -68,9 +68,23 @@ class Model
 
     public function __get($field)
     {
+//        var_dump(static::$field_types);
         if (isset($this->data[$field]))
         {
-            return $this->data[$field];
+            //
+            if ((static::$field_types[$field] === 'int') or ((static::$field_types[$field] === 'tinyint')))
+            {
+                $value = (int) $this->data[$field];
+            }
+            elseif (static::$field_types[$field] === 'float unsigned')
+            {
+                $value = (float) $this->data[$field];
+            }
+            else
+            {
+                $value = mysqli_real_escape_string(self::get_db(), $this->data[$field]);
+            }
+            return $value;
         }
         else
         {
@@ -127,9 +141,13 @@ class Model
             {
                 if (in_array($field,static::$fields))
                 {
-                    if (static::$field_types[$field] === 'int')
+                    if ((static::$field_types[$field] === 'int') or (static::$field_types[$field] === 'tinyint'))
                     {
                         $value = (int) $value;
+                    }
+                    elseif (static::$field_types[$field] === 'float unsigned')
+                    {
+                        $value = (float) $value;
                     }
                     else
                     {
@@ -309,9 +327,13 @@ class Model
             }
             else
             {
-                if (static::$field_types[$k] === 'int')
+                if ((static::$field_types[$k] === 'int') or (static::$field_types[$k] === 'tinyint'))
                 {
                     $v = (int) $v;
+                }
+                elseif (static::$field_types[$k] === 'float unsigned')
+                {
+                    $v = (float) $v;
                 }
                 else
                 {

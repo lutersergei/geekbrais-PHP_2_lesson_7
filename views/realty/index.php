@@ -97,7 +97,7 @@ HTML;
                                     <div class="form-group">
                                         <label for="material" class="col-sm-2 control-label">Материал стен</label>
                                         <div class="col-sm-2">
-                                            <select id="material" name="material" class="form-control">
+                                            <select name="wall_id" class="form-control">
 
 <?php
 foreach ($wall as $w) {
@@ -127,7 +127,7 @@ HTML;
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <input type="hidden" name="action" value="add">
+                                            <input type="hidden" name="__action" value="add">
                                             <button type="submit" class="btn btn-default"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Добавить</button>
                                         </div>
                                     </div>

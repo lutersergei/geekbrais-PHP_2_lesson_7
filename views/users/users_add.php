@@ -29,7 +29,7 @@ $title="Добавление пользователя";
                                 <label for="description" class="col-sm-2 control-label">Пароль</label>
                                 <div class="col-sm-3 input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input type="password" required class="form-control" id="password" name="password" >
+                                    <input type="password" required class="form-control" id="__password" name="__password" >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -48,7 +48,7 @@ $title="Добавление пользователя";
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input type="hidden" name="action" value="add">
+                                    <input type="hidden" name="__action" value="add">
                                     <button type="submit" class="btn btn-default"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Добавить</button>
                                 </div>
                             </div>

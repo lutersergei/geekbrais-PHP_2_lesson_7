@@ -25,16 +25,13 @@ class UsersController extends Controller
 
   public function users_add()
   {
-    if (isset($_POST['action']))
+    if (isset($_POST['__action']))
     {
-      if ($_POST['action'] === 'add')
+      if ($_POST['__action'] === 'add')
       {
-          $username = $_POST['username'];
           $password = $_POST['password'];
-          $role = $_POST['role'];
           $users = new Users();
-          $users->username = $username;
-          $users->role = $role;
+          $users->load(System::post());
           $users->create_password($password);
           if ($users->add() === $users::CREATE_FAILED)
           {

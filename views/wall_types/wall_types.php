@@ -93,7 +93,7 @@ HTML;
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <input type="hidden" name="action" value="add">
+                                        <input type="hidden" name="__action" value="add">
                                         <button type="submit" class="btn btn-default"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Добавить</button>
                                     </div>
                                 </div>

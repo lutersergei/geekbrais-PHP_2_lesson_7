@@ -35,7 +35,7 @@ $title="Изменение тега - $tag_title";
                                 <?php echo <<<HTML
                                         <form method="post" action="">
                                             <td><textarea name="title" id="title" cols="30" rows="2">{$tag_title}</textarea></td>   
-                                            <td><input type="hidden" name="action" value="edit">
+                                            <td><input type="hidden" name="__action" value="edit">
                                             <td><input type="hidden" name="id" value="{$id}">
                                             <button class="btn btn-default" type="submit" >Изменить</button></td>
                                             </tr>   

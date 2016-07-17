@@ -54,5 +54,4 @@ GROUP BY `wall`.`id`";
         }
         return $walls;
     }
-    
 }

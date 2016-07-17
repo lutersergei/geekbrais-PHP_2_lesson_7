@@ -26,11 +26,11 @@ class RealtyTagsController extends Controller
     public function realty_tags_index_and_add()
     {
 //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['action'])) {
-            if ($_POST['action'] === 'add')
+        if (isset($_POST['__action'])) {
+            if ($_POST['__action'] === 'add')
             {
                 $tag = new RealtyTags();
-                $tag->title = $_POST['title'];
+                $tag->load(System::post());
                 if ($tag->add())
                 {
                     header("Location:index.php?cat=realty_tags&view=index_and_add");
@@ -60,13 +60,13 @@ class RealtyTagsController extends Controller
             die();
         }
 //Проверка на пост запрос об изменеии записи
-        if (isset($_POST['action']))
+        if (isset($_POST['__action']))
         {
-            if ($_POST['action'] === 'edit')
+            if ($_POST['__action'] === 'edit')
             {
                 $id = (int)  $_POST['id'];
                 $tag = new RealtyTags($id);
-                $tag->title = $_POST['title'];
+                $tag->load(System::post());
                 if ($tag->update())
                 {
                     header("Location:index.php?cat=realty_tags&view=index_and_add");
@@ -95,12 +95,11 @@ class RealtyTagsController extends Controller
             die();
         }
 //Проверка на пост запрос об удалении записи
-        if (isset($_POST['action'])) {
-            if (($_POST['action'] === 'delete'))
+        if (isset($_POST['__action'])) {
+            if (($_POST['__action'] === 'delete'))
             {
                 $id = (int) $_POST['id'];
                 $tag = new RealtyTags($id);
-                $tag->title = $_POST['title'];
                 if ($tag->delete())
                 {
                     header("Location:index.php?cat=realty_tags&view=index_and_add");

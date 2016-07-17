@@ -52,7 +52,7 @@ $description = $realty->description;
 HTML;
 ?>
                                             <td>
-                                                <select id="material" name="material" class="form-control">
+                                                <select name="wall_id" class="form-control">
                                                 <?php foreach ($wall as $w)
                                                 {
                                                     $select=false;
@@ -67,7 +67,7 @@ HTML;
                                             <td><input style="width: 80px" type="number" name="area" value="{$area}"></td>
                                             <td><input style="width: 120px" type="number" name="price" value="{$price}"></td>
                                             <td><textarea name="description" id="" cols="30" rows="2">{$description}</textarea></td>   
-                                            <td><input type="hidden" name="action" value="edit">
+                                            <td><input type="hidden" name="__action" value="edit">
                                             <td><input type="hidden" name="id" value="{$id}">
                                             <button class="btn btn-default" type="submit" >Изменить</button></td>
                                             </tr>   
@@ -107,7 +107,7 @@ HTML;
 HTML;
                                             }     ?>                                      </select>
                                         <hr>
-                                        <input type="hidden" name="action" value="add_tag">
+                                        <input type="hidden" name="__action" value="add_tag">
                                         <input type="hidden" name="id" value="<?= $realty->id ?>">
                                         <button type="submit" class="btn btn-default">Добавить</button>
                                     </form>
@@ -118,7 +118,7 @@ HTML;
                                     {
                                         ?>
                                         <form style="display: inline" method="post">
-                                            <input type="hidden" name="action" value="delete_tag"/>
+                                            <input type="hidden" name="__action" value="delete_tag"/>
                                             <input type="hidden" name="id" value="<?= $id ?>">
                                             <input type="hidden" name="relation_id" value="<?= $t['relation_id'] ?>"/>
                                             <button class="btn" style="display: inline"><?= $t['title'] ?> <i class="fa fa-times"></i></button></form>

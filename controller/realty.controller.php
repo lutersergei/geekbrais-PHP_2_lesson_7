@@ -33,19 +33,13 @@ class RealtyController extends Controller
         }
 
 //Проверка на пост запрос об изменеии записи
-        if (isset($_POST['action']))
+        if (isset($_POST['__action']))
         {
-            if ($_POST['action'] === 'edit')
+            if ($_POST['__action'] === 'edit')
             {
                 $id = (int) $_POST['id'];
                 $realty = new Realty($id);
-                $realty->rooms = $_POST['rooms'];
-                $realty->floor = $_POST['floor'];
-                $realty->adress = $_POST['adress'];
-                $realty->material = $_POST['material'];
-                $realty->area = $_POST['area'];
-                $realty->price = $_POST['price'];
-                $realty->description = $_POST['description'];
+                $realty->load(System::post());
                 if (!$realty->update())
                 {
                     die(ERROR_UPDATE);
@@ -56,7 +50,7 @@ class RealtyController extends Controller
                     die();
                 }
             }
-            if ($_POST['action'] === 'add_tag')
+            if ($_POST['__action'] === 'add_tag')
             {
                 $id =  (int) $_POST['id'];
                 $tag_id = (int)  $_POST['tag_id'];
@@ -70,7 +64,7 @@ class RealtyController extends Controller
                     die(ERROR_CREATE);
                 }
             }
-            if ($_POST['action'] === 'delete_tag')
+            if ($_POST['__action'] === 'delete_tag')
             {
                 $id = (int)  $_POST['id'];
                 $relation_id =  (int) $_POST['relation_id'];
@@ -106,8 +100,8 @@ class RealtyController extends Controller
         }
 
 //Проверка на пост запрос об удалении записи
-        if (isset($_POST['action'])) {
-            if ($_POST['action'] === 'delete')
+        if (isset($_POST['__action'])) {
+            if ($_POST['__action'] === 'delete')
             {
                 $id = (int) $_POST['id'];
                 $realty = new Realty($id);
@@ -147,17 +141,11 @@ class RealtyController extends Controller
     public function realty_index_and_add()
     {
         //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['action'])) {
-            if ($_POST['action'] === 'add')
+        if (isset($_POST['__action'])) {
+            if ($_POST['__action'] === 'add')
             {
                 $realty = new Realty();
-                $realty-> rooms = $_POST['rooms'];
-                $realty-> floor = $_POST['floor'];
-                $realty-> adress = $_POST['adress'];
-                $realty-> wall_id = $_POST['material'];
-                $realty-> area = $_POST['area'];
-                $realty-> price = $_POST['price'];
-                $realty-> description = $_POST['description'];
+                $realty->load(System::post());
                 $result = $realty->add();
                 if ($result)
                 {
@@ -203,29 +191,23 @@ class RealtyController extends Controller
         $walls = ArrayHelper::index($walls, 'id');
 
         //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['action']))
+        if (isset($_POST['__action']))
         {
-            if ($_POST['action'] === 'add')
+            if ($_POST['__action'] === 'add')
             {
-                if ($_POST['action'] === 'add')
+                if ($_POST['__action'] === 'add')
                 {
-                $realty = new Realty();
-                $realty-> rooms = $_POST['rooms'];
-                $realty-> floor = $_POST['floor'];
-                $realty-> adress = $_POST['adress'];
-                $realty-> wall_id = $_POST['material'];
-                $realty-> area = $_POST['area'];
-                $realty-> price = $_POST['price'];
-                $realty-> description = $_POST['description'];
-                if (!$realty->add())
-                {
-                    header("Location:index.php?cat=realty&view=index_and_add");
-                    die();
-                }
-                else
-                {
-                    die(ERROR_CREATE);
-                }
+                    $realty = new Realty();
+                    $realty->load(System::post());
+                    if (!$realty->add())
+                    {
+                        header("Location:index.php?cat=realty&view=index_and_add");
+                        die();
+                    }
+                    else
+                    {
+                        die(ERROR_CREATE);
+                    }
             }
             }
         }
@@ -249,20 +231,14 @@ class RealtyController extends Controller
         $walls = Wall::all();
 
         //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['action']))
+        if (isset($_POST['__action']))
         {
-            if ($_POST['action'] === 'add')
+            if ($_POST['__action'] === 'add')
             {
-                if ($_POST['action'] === 'add')
+                if ($_POST['__action'] === 'add')
                 {
                     $realty = new Realty();
-                    $realty-> rooms = $_POST['rooms'];
-                    $realty-> floor = $_POST['floor'];
-                    $realty-> adress = $_POST['adress'];
-                    $realty-> wall_id = $_POST['material'];
-                    $realty-> area = $_POST['area'];
-                    $realty-> price = $_POST['price'];
-                    $realty-> description = $_POST['description'];
+                    $realty->load(System::post());
                     if (!$realty->add())
                     {
                         header("Location:index.php?cat=realty&view=index_and_add");

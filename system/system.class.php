@@ -21,4 +21,34 @@ class System
 
         return self::$user;
     }
+
+    public static function post($field = NULL, $default = NULL )
+    {
+        if ($field !== NULL)
+        {
+            if (isset($_POST[$field]))
+            {
+                if ($_POST[$field] !== '')
+                {
+                    return $_POST[$field];
+                }
+                else
+                {
+                    return $default;
+                }
+            }
+            else
+            {
+                return $default;
+            }
+        }
+        else
+        {
+            $result = $_POST;
+            unset($result['__action']);
+            unset($result['__password']);
+            unset($result['id']);
+            return $result;
+        }
+    }
 }
