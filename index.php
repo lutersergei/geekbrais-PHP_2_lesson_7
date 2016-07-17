@@ -14,8 +14,6 @@ require_once ('functions.php');
 
 spl_autoload_register('class_autoload');
 
-$system = new System();
-
 if (isset($_GET['cat']))
 {
     $controller= $_GET['cat'];

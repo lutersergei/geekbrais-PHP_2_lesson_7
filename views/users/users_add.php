@@ -7,8 +7,6 @@
  */
 $title="Добавление пользователя";
 ?>
-<div id="page-wrapper">
-    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -61,7 +59,3 @@ $title="Добавление пользователя";
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-</div>
-<!-- /#page-wrapper -->

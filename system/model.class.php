@@ -392,7 +392,7 @@ class Model
         else
         {
             $error = mysqli_errno(self::get_db());
-            if ($error == 1062) return self::DUPLICATE_FIELD;
+            if ($error == 1062) return self::DUPLICATE_FIELD;   //Ошибка при  дублировании в уникальном поле (User->username)
             return self::CREATE_FAILED;
         }
     }

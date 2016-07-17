@@ -57,18 +57,6 @@ if ($error !== NULL)
 </head>
 
 <body>
-<?php
-if ($message !== NULL)
-{
-    ?>
-    <div class="alert alert-<?=$message_style?>">
-        <?=$message?>
-    </div>
-<?php
-}
-?>
-
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -103,9 +91,25 @@ if ($message !== NULL)
         </nav>
 
         <!-- Page Content -->
-        <?php
-        echo $content;
-        ?>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <?php
+                if ($message !== NULL)
+                {
+                    ?>
+                    <div class="alert alert-<?=$message_style?>">
+                        <?=$message?>
+                    </div>
+                    <?php
+                }
+                ?>
+                <?php
+                echo $content;
+                ?>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
         <!-- /#page-wrapper -->
 
     </div>

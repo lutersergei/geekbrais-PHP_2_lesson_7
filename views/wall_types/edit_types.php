@@ -11,8 +11,6 @@ $title="Изменение материала"." - ".$material;
 ?>
 
 <!-- Page Content -->
-    <div id="page-wrapper">
-        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
                     <ol class="breadcrumb">
@@ -62,8 +60,4 @@ HTML;
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </div>
-    <!-- /#page-wrapper -->
+            <!-- /.row -->>
