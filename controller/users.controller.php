@@ -8,12 +8,10 @@ class UsersController extends Controller
 
     public function __construct()
     {
-//        if (System::get_user()->id === NULL)
-//        {
-//            // запись в сессию страницы, с которой перешли на авторизацию
-//            $_SESSION['last_page'] = '/users/index';
-//            header("Location:/auth/login");
-//        }
+        if ((System::get_user()->id === NULL) || (System::get_user()->role !== Users::ROLE_ADMIN))
+        {
+            header("Location:/auth/login");
+        }
     }
 
     public function users_index()

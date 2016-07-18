@@ -41,4 +41,20 @@ class AuthController extends Controller
         }
         return $this->render("auth/login", []);
     }
+
+    public function auth_logout()
+    {
+        session_unset();
+        session_destroy();
+        if (isset($_COOKIE['username']))
+        {
+            setcookie("username","",time() - 60);
+        }
+        if (isset($_COOKIE['password']))
+        {
+            setcookie("password","",time() - 60);
+        }
+        header("Location: /");
+        die();
+    }
 }

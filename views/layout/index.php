@@ -11,19 +11,30 @@ if (!isset($title))
     $title='Агентство Недвижимости';
 }
 $message = NULL;
-$success = System::get_message('success');
-if ($success !== NULL)
+if (System::get_message('success') !== NULL)
 {
-    $message = $success;
+    $message = System::get_message('success');
     $message_style = 'success';
 }
-$error = System::get_message('error');
-if ($error !== NULL)
+if (System::get_message('error') !== NULL)
 {
-    $message = $error;
+    $message = System::get_message('error');
     $message_style = 'danger';
 }
-//var_dump(System::get_user()->id);
+if (System::get_user()->id === NULL)
+{
+    $user = '[Войти]';
+    $link = "/auth/login";
+    $role = 'Гость';
+}
+else
+{
+    $username = System::get_user()->username;
+    $user = "{$username}"." [Выйти]";
+    $link = "/auth/logout";
+    $role = Users::$roles[System::get_user()->role];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -59,7 +70,6 @@ if ($error !== NULL)
 
 <body>
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -69,7 +79,7 @@ if ($error !== NULL)
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">Выйти</a>
+                <a class="navbar-brand" href="<?=$link?>"><?=$user?></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -77,10 +87,13 @@ if ($error !== NULL)
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
+                            <pre class="text-uppercase text-center"><?=$role?></pre>
                             <a href="/realty/index_and_add"><i class="fa fa-home fa-fw"></i>&nbsp; Объекты недвижимости</a>
                             <a href="/wall/index_and_add"><i class="fa fa-th-list fa-fw"></i>&nbsp; Материалы стен</a>
                             <a href="/realty_tags/index_and_add"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
                             <a href="/users/index"><i class="fa fa-users fa-fw"></i>&nbsp; Пользователи</a>
+
+
                         </li>
                     </ul>
                 </div>
@@ -103,8 +116,7 @@ if ($error !== NULL)
                     </div>
                     <?php
                 }
-                ?>
-                <?php
+                //Контент
                 echo $content;
                 ?>
             </div>
