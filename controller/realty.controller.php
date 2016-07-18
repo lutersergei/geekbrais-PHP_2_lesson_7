@@ -49,13 +49,11 @@ class RealtyController extends Controller
                 $id =  (int) $_POST['id'];
                 $tag_id = (int)  $_POST['tag_id'];
                 $realty = new Realty($id);
-                if ($realty->realty_add_tag($tag_id))
+                $result = $realty->realty_add_tag($tag_id);
+                if (System::create_message('add_tag',$result))
                 {
-                    header("Location:index.php?cat=realty&view=edit&id={$id}");
-                }
-                else
-                {
-                    die(ERROR_CREATE);
+                    header("Location:/realty/edit/{$id}");
+                    die();
                 }
             }
             if ($_POST['__action'] === 'delete_tag')
@@ -63,13 +61,11 @@ class RealtyController extends Controller
                 $id = (int)  $_POST['id'];
                 $relation_id =  (int) $_POST['relation_id'];
                 $realty = new Realty($id);
-                if ($realty->realty_delete_tag($relation_id))
+                $result = $realty->realty_delete_tag($relation_id);
+                if (System::create_message('delete_tag',$result))
                 {
-                    header("Location:index.php?cat=realty&view=edit&id={$id}");
-                }
-                else
-                {
-                    die(ERROR_DELETE);
+                    header("Location:/realty/edit/{$id}");
+                    die();
                 }
             }
         }

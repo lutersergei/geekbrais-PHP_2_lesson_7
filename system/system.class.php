@@ -94,6 +94,18 @@ class System
                 static::set_message('success', $message);
                 return true;
             }
+            if ($action === 'add_tag')
+            {
+                $message = 'Тег добавлен';
+                static::set_message('success', $message);
+                return true;
+            }
+            if ($action === 'delete_tag')
+            {
+                $message = 'Тег удален';
+                static::set_message('success', $message);
+                return true;
+            }
             else return false;
         }
         else
