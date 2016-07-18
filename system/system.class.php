@@ -128,6 +128,12 @@ class System
                     static::set_message('error', $message);
                     return true;
                 }
+                if ($result === Model::DUPLICATE_FIELD)
+                {
+                    $message = 'Пользователь с таким именем уже существует';
+                    static::set_message('error', $message);
+                    return true;
+                }
                 if ($result === Model::OBJECT_NOT_EXIST)
                 {
                     $message = 'Объект не найден';
