@@ -18,20 +18,16 @@ class WallController extends Controller
         if (System::get_user()->id === NULL)
         {
             // запись в сессию страницы, с которой перешли на авторизацию
-            $_SESSION['last_page'] = 'index.php?cat=wall&view=index_and_add';
-            header("Location:index.php?cat=auth&view=login");
+            $_SESSION['last_page'] = '/wall/index_and_add';
+            header("Location:/auth/login");
         }
     }
 
-    public function wall_edit()
+    public function wall_edit($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id = (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=wall&view=index_and_add');
+            header('Location:/wall/index_and_add');
             die();
         }
 
@@ -45,7 +41,7 @@ class WallController extends Controller
                 $result = $wall->update();
                 if (System::create_message('update',$result))
                 {
-                    header('Location:index.php?cat=wall&view=index_and_add');
+                    header('Location:/wall/index_and_add');
                     die();
                 }
             }
@@ -56,15 +52,11 @@ class WallController extends Controller
         return $this->render("wall_types/edit_types", ['wall' => $wall]);
     }
 
-    public function wall_delete()
+    public function wall_delete($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id = (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=wall&view=index_and_add');
+            header('Location:/wall/index_and_add');
             die();
         }
 //Проверка на пост запрос об удалении записи
@@ -77,13 +69,13 @@ class WallController extends Controller
                 $result = $wall->delete();
                 if (System::create_message('delete',$result))
                 {
-                    header('Location:index.php?cat=wall&view=index_and_add');
+                    header('Location:/wall/index_and_add');
                     die();
                 }
             }
             else
             {
-                header('Location:index.php?cat=wall&view=index_and_add');
+                header('Location:/wall/index_and_add');
                 die();
             }
         }
@@ -91,15 +83,11 @@ class WallController extends Controller
         return $this->render("wall_types/delete_types", ['wall' => $wall]);
     }
 
-    public function wall_preview()
+    public function wall_preview($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id = (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=wall&view=index_and_add');
+            header('Location:/wall/index_and_add');
             die();
         }
         $wall = new Wall($id);
@@ -118,7 +106,7 @@ class WallController extends Controller
                 $result = $wall->add();
                 if (System::create_message('add',$result))
                 {
-                    header('Location:index.php?cat=wall&view=index_and_add');
+                    header('Location:/wall/index_and_add');
                     die();
                 }
             }

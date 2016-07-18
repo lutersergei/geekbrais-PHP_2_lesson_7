@@ -32,7 +32,7 @@ $title="Материалы стен";
                                     {
                                         //Если недвижимость с таки материалом существует, то материал нельзя удалить и появляется ссылка на просмотр всех сущностей с таки материалом
                                         if (($wall->count)>0) {
-                                            $result="<a href=index.php?realty=wall&view=group_by_wall&wall_id={$wall->id}>{$wall->material}</a>";
+                                            $result="<a href=/realty/group_by_wall/{$wall->id}>{$wall->material}</a>";
                                             $disabled='disabled';
                                         }
                                         else
@@ -46,9 +46,9 @@ $title="Материалы стен";
                                             <td>{$wall->count}</td>       
                                             <td>
                                             <div class="btn-group" role="group">
-                                            <a href="../index.php?cat=wall&view=preview&id={$wall->id}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотр</a>
-                                            <a href="../index.php?cat=wall&view=edit&id={$wall->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
-                                            <a href="../index.php?cat=wall&view=delete&id={$wall->id}"  class="btn btn-default $disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
+                                            <a href="/wall/preview/{$wall->id}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотр</a>
+                                            <a href="/wall/edit/{$wall->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
+                                            <a href="/wall/delete/{$wall->id}"  class="btn btn-default $disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
                                             </div>
                                             </td>
                                             </tr>

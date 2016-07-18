@@ -23,7 +23,7 @@ $title="Авторизация";
                                 <label for="description" class="col-sm-4 control-label">Пароль</label>
                                 <div class="col-sm-5 input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input type="password" required class="form-control" id="password" name="password" >
+                                    <input type="password" required class="form-control" id="__password" name="__password" >
                                 </div>
                             </div>
                             <div class="form-group">
@@ -32,7 +32,7 @@ $title="Авторизация";
                                         <div class="col-lg-8 col-lg-pull-2 col-lg-push-2">
                                             <input type="hidden" name="__action" value="login">
                                             <button type="submit" class="btn btn-default btn-block"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Отправить</button>
-                                            <a href="index.php" class="btn btn-default btn-block"><span class="fa fa-undo fa-lg" aria-hidden="true"></span> Назад</a>
+                                            <a href="/" class="btn btn-default btn-block"><span class="fa fa-undo fa-lg" aria-hidden="true"></span> Назад</a>
                                         </div>
                                     </div>
                                 </div>

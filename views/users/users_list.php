@@ -46,7 +46,7 @@ $title="Пользователи";
                                 ?>
                                 </tbody>
                             </table>
-                            <a href="../index.php?cat=users&view=add"  class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить</a>
+                            <a href="/users/add"  class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить</a>
                         </div>
                         <!-- /.table-responsive -->
                     </div>

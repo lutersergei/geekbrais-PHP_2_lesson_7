@@ -20,17 +20,14 @@ class RealtyController extends Controller
         }
     }
 
-    public function realty_edit()
+    public function realty_edit($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id = (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=realty&view=index_and_add');
+            header('Location:/realty/index_and_add');
             die();
         }
+
 
 //Проверка на пост запрос об изменеии записи
         if (isset($_POST['__action']))
@@ -43,7 +40,7 @@ class RealtyController extends Controller
                 $result = $realty->update();
                 if (System::create_message('update',$result))
                 {
-                    header("Location:index.php?cat=realty&view=index_and_add");
+                    header('Location:/realty/index_and_add');
                     die();
                 }
             }
@@ -87,12 +84,11 @@ class RealtyController extends Controller
         return $this->render("realty/edit", ['realty' => $realty, 'wall' => $walls , 'relation_tags' => $relation_tags , 'tags' => $tags]); /*    , 'relation_tags' => $relation_tags , 'tags' => $tags  */
     }
 
-    public function realty_delete()
+    public function realty_delete($id = NULL)
     {
-        if (isset($_GET['id'])) {
-            $id = (int) $_GET['id'];
-        } else {
-            header('Location:index.php?cat=realty&view=index_and_add');
+        if ($id === NULL)
+        {
+            header('Location:/realty/index_and_add');
             die();
         }
 
@@ -105,28 +101,25 @@ class RealtyController extends Controller
                 $result = $realty->delete();
                 if (System::create_message('delete',$result))
                 {
-                    header("Location:index.php?cat=realty&view=index_and_add");
+                    header('Location:/realty/index_and_add');
                     die();
                 }
             }
-            else header('Location:index.php?cat=realty&view=index_and_add');
+            header('Location:/realty/index_and_add');
         }
         $realty = new Realty($id);
 
         return $this->render("realty/delete", ['realty' => $realty]);
     }
 
-    public function realty_preview()
+    public function realty_preview($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id =  (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=realty&view=index_and_add');
+            header('Location:/realty/index_and_add');
             die();
         }
+
 //Получение информации об просматриваемой записи
 
 
@@ -147,7 +140,7 @@ class RealtyController extends Controller
                 $result = $realty->add();
                 if (System::create_message('add',$result))
                 {
-                    header("Location:index.php?cat=realty&view=index_and_add");
+                    header('Location:/realty/index_and_add');
                     die();
                 }
             }
@@ -169,15 +162,11 @@ class RealtyController extends Controller
         return $this->render("realty/index", ['realty' => $realty, 'wall' => $walls ]);
     }
     
-    public function realty_group_by_wall()
+    public function realty_group_by_wall($wall_id = NULL)
     {
-        if (isset($_GET['wall_id']))
+        if ($wall_id === NULL)
         {
-            $wall_id = (int)  $_GET['wall_id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=realty&view=index_and_add');
+            header('Location:/realty/index_and_add');
             die();
         }
         $realty = Realty::load_wall_group($wall_id);
@@ -198,7 +187,7 @@ class RealtyController extends Controller
                     $result = $realty->add();
                     if (System::create_message('add',$result))
                     {
-                        header("Location:index.php?cat=realty&view=index_and_add");
+                        header('Location:/realty/index_and_add');
                         die();
                     }
             }
@@ -207,15 +196,11 @@ class RealtyController extends Controller
         return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls]);
     }
 
-    public function realty_group_by_tag()
+    public function realty_group_by_tag($tag_id = NULL)
     {
-        if (isset($_GET['tag_id']))
+        if ($tag_id === NULL)
         {
-            $tag_id =  (int) $_GET['tag_id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=realty&view=index_and_add');
+            header('Location:/realty/index_and_add');
             die();
         }
         $realty = Realty::load_tag_group($tag_id);
@@ -235,7 +220,7 @@ class RealtyController extends Controller
                     $result = $realty->add();
                     if (System::create_message('add',$result))
                     {
-                        header("Location:index.php?cat=realty&view=index_and_add");
+                        header('Location:/realty/index_and_add');
                         die();
                     }
                 }

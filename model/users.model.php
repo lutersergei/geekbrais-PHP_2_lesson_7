@@ -109,9 +109,7 @@ class Users extends Model
     {
         $username = mysqli_real_escape_string(self::get_db(), $username);
         $query = "SELECT * FROM `".static::tableName()."` WHERE `username` = '{$username}'";
-//        die(var_dump($query));
         $result = mysqli_query(self::get_db(), $query);
-//        die(var_dump($result));
         if ($row = mysqli_fetch_assoc($result))
         {
             $this->load($row);

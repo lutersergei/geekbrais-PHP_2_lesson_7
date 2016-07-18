@@ -18,8 +18,8 @@ class RealtyTagsController extends Controller
         if (System::get_user()->id === NULL)
         {
             // запись в сессию страницы, с которой перешли на авторизацию
-            $_SESSION['last_page'] = 'index.php?cat=realty_tags&view=index_and_add';
-            header("Location:index.php?cat=auth&view=login");
+            $_SESSION['last_page'] = '/realty_tags/index_and_add';
+            header("Location:/auth/login");
         }
     }
 
@@ -34,7 +34,7 @@ class RealtyTagsController extends Controller
                 $result = $tag->add();
                 if (System::create_message('add',$result))
                 {
-                    header("Location:index.php?cat=realty_tags&view=index_and_add");
+                    header("Location:/realty_tags/index_and_add");
                     die();
                 }
             }
@@ -45,15 +45,11 @@ class RealtyTagsController extends Controller
         return $this->render("tags/tags_list", ['tags' => $tags]);
     }
 
-    public function realty_tags_edit()
+    public function realty_tags_edit($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id = (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=wall&view=index_and_add');
+            header('Location:realty_tags/index_and_add');
             die();
         }
 //Проверка на пост запрос об изменеии записи
@@ -67,7 +63,7 @@ class RealtyTagsController extends Controller
                 $result = $tag->update();
                 if (System::create_message('update',$result))
                 {
-                    header("Location:index.php?cat=realty_tags&view=index_and_add");
+                    header("Location:/realty_tags/index_and_add");
                     die();
                 }
             }
@@ -77,15 +73,11 @@ class RealtyTagsController extends Controller
         return $this->render("tags/edit_tags", ['tag' => $tag]);
     }
 
-    public function realty_tags_delete()
+    public function realty_tags_delete($id = NULL)
     {
-        if (isset($_GET['id']))
+        if ($id === NULL)
         {
-            $id = (int) $_GET['id'];
-        }
-        else
-        {
-            header('Location:index.php?cat=wall&view=index_and_add');
+            header('Location:realty_tags/index_and_add');
             die();
         }
 //Проверка на пост запрос об удалении записи
@@ -97,14 +89,14 @@ class RealtyTagsController extends Controller
                 $result = $tag->delete();
                 if (System::create_message('delete',$result))
                 {
-                    header("Location:index.php?cat=realty_tags&view=index_and_add");
+                    header("Location:/realty_tags/index_and_add");
                     die();
                 }
             }
             else
             {
-                header('Location:index.php?cat=realty_tags&view=index_and_add');
-                die('404');
+                header("Location:/realty_tags/index_and_add");
+                die($_POST['__action']);
             }
         }
         //Получение информации об просматриваемой записи

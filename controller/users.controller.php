@@ -8,12 +8,12 @@ class UsersController extends Controller
 
     public function __construct()
     {
-        if (System::get_user()->id === NULL)
-        {
-            // запись в сессию страницы, с которой перешли на авторизацию
-            $_SESSION['last_page'] = 'index.php?cat=users&view=index';
-            header("Location:index.php?cat=auth&view=login");
-        }
+//        if (System::get_user()->id === NULL)
+//        {
+//            // запись в сессию страницы, с которой перешли на авторизацию
+//            $_SESSION['last_page'] = '/users/index';
+//            header("Location:/auth/login");
+//        }
     }
 
   public function users_index()
@@ -29,14 +29,14 @@ class UsersController extends Controller
     {
       if ($_POST['__action'] === 'add')
       {
-          $password = $_POST['password'];
+          $password = $_POST['__password'];
           $users = new Users();
           $users->load(System::post());
           $users->create_password($password);
           $result = $users->add();
           if (System::create_message('add',$result))
           {
-              header('Location:index.php?cat=users&view=index');
+              header('Location:/users/index');
               die();
           }
       }

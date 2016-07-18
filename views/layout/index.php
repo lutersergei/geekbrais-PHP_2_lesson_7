@@ -23,6 +23,7 @@ if ($error !== NULL)
     $message = $error;
     $message_style = 'danger';
 }
+//var_dump(System::get_user()->id);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -36,16 +37,16 @@ if ($error !== NULL)
     <title><?=$title?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,10 +77,10 @@ if ($error !== NULL)
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.php?cat=realty&view=index_and_add"><i class="fa fa-home fa-fw"></i>&nbsp; Объекты недвижимости</a>
-                            <a href="index.php?cat=wall&view=index_and_add"><i class="fa fa-th-list fa-fw"></i>&nbsp; Материалы стен</a>
-                            <a href="index.php?cat=realty_tags&view=index_and_add"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
-                            <a href="index.php?cat=users&view=index"><i class="fa fa-users fa-fw"></i>&nbsp; Пользователи</a>
+                            <a href="/realty/index_and_add"><i class="fa fa-home fa-fw"></i>&nbsp; Объекты недвижимости</a>
+                            <a href="/wall/index_and_add"><i class="fa fa-th-list fa-fw"></i>&nbsp; Материалы стен</a>
+                            <a href="/realty_tags/index_and_add"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
+                            <a href="/users/index"><i class="fa fa-users fa-fw"></i>&nbsp; Пользователи</a>
                         </li>
                     </ul>
                 </div>
@@ -116,16 +117,16 @@ if ($error !== NULL)
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="/dist/js/sb-admin-2.js"></script>
 
 </body>
 </html>

@@ -48,9 +48,9 @@ $title="Агентство недвижимости";
                                             <td>{$realty_one->price}</td>                                          
                                             <td>
                                             <div class="btn-group" role="group">
-                                            <a href="index.php?cat=realty&view=preview&id={$realty_one->id}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотр</a>
-                                            <a href="index.php?cat=realty&view=edit&id={$realty_one->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
-                                            <a href="index.php?cat=realty&view=delete&id={$realty_one->id}" class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
+                                            <a href="/realty/preview/{$realty_one->id}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотр</a>
+                                            <a href="/realty/edit/{$realty_one->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
+                                            <a href="/realty/delete/{$realty_one->id}" class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
                                             </div>
                                             </td>
                                             </tr>

@@ -19,7 +19,7 @@ class AuthController extends Controller
             if ($_POST['__action'] === 'login')
             {
                 $username = $_POST['username'];
-                $password = $_POST['password'];
+                $password = $_POST['__password'];
                 $users = new Users();
                 if ($users->auth($username, $password))
                 {
@@ -34,7 +34,7 @@ class AuthController extends Controller
                 }
                 else
                 {
-                    header("Location:index.php?cat=auth&view=login");
+                    header("Location:/auth/login");
                     die();
                 }
             }

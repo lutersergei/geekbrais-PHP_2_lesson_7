@@ -33,7 +33,7 @@ $title="Список тегов";
                                 {
                                     //Если недвижимость с таки материалом существует, то материал нельзя удалить и появляется ссылка на просмотр всех сущностей с таки материалом
                                     if (($tag->count)>0) {
-                                        $result="<a href=\"index.php?realty=wall&view=group_by_tag&tag_id={$tag->id}\"><span class='glyphicon glyphicon-tag'></span> {$tag->title}</a>";
+                                        $result="<a href=/realty/group_by_tag/{$tag->id}><span class='glyphicon glyphicon-tag'></span> {$tag->title}</a>";
                                         $disabled='disabled';
                                     }
                                     else
@@ -48,8 +48,8 @@ $title="Список тегов";
                                             <td>{$tag->count}</td> 
                                             <td>
                                             <div class="btn-group" role="group">
-                                            <a href="../index.php?cat=realty_tags&view=edit&id={$tag->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
-                                            <a href="../index.php?cat=realty_tags&view=delete&id={$tag->id}"  class="btn btn-default $disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
+                                            <a href="/realty_tags/edit/{$tag->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
+                                            <a href="/realty_tags/delete/{$tag->id}"  class="btn btn-default $disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
                                             </div>
                                             </td>
                                             </tr>

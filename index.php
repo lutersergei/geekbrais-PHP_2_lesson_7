@@ -14,22 +14,40 @@ require_once ('functions.php');
 
 spl_autoload_register('class_autoload');
 
-if (isset($_GET['cat']))
+if (isset($_GET['route']))
 {
-    $controller= $_GET['cat'];
+    $pie = explode('/', $_GET['route']);
+
+    if (isset($pie[0]) && ($pie[0] !== ''))
+    {
+        $controller = $pie[0];
+    }
+    else
+    {
+        $controller='realty';
+    }
+    if (isset($pie[1]) && ($pie[1] !== ''))
+    {
+        $controller_action = $pie[1];
+    }
+    else
+    {
+        $controller_action = 'index_and_add';
+    }
+    if (isset($pie[2]) && ($pie[2] !== ''))
+    {
+        $request_id = $pie[2];
+    }
+    else
+    {
+        $request_id = NULL;
+    }
 }
 else
 {
     $controller='realty';
-}
-
-if (isset($_GET['view']))
-{
-    $controller_action = $_GET['view'];
-}
-else
-{
     $controller_action = 'index_and_add';
+    $request_id = NULL;
 }
 
 $controller_class_name = name2controller_class_name($controller);
@@ -37,7 +55,15 @@ $controller_function_name = $controller."_".$controller_action;
 
 $controller_object = new $controller_class_name();
 
-$result = $controller_object ->  $controller_function_name();
+if ($request_id !== NULL)
+{
+    $result = $controller_object ->  $controller_function_name($request_id);
+}
+else
+{
+    $result = $controller_object ->  $controller_function_name();
+}
+
 if ($result) echo $result;
 
 //mysqli_close($link);
