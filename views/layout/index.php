@@ -6,10 +6,12 @@
  * Time: 11:34
  */
 /* @var $content */
+
 if (!isset($title))
 {
     $title='Агентство Недвижимости';
 }
+
 if (System::get_message())
 {
     $success = System::get_message('success');

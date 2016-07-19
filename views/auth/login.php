@@ -13,17 +13,24 @@ $title="Авторизация";
                     <div class="panel-body">
                         <form method="post" class="form-horizontal">
                             <div class="form-group">
-                                <label for="room" class="col-sm-4 control-label">Имя пользователя</label>
+                                <label for="username" class="col-sm-4 control-label">Имя пользователя</label>
                                 <div class="col-sm-5 input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="text" required class="form-control" id="username" name="username" >
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="description" class="col-sm-4 control-label">Пароль</label>
+                                <label for="__password" class="col-sm-4 control-label">Пароль</label>
                                 <div class="col-sm-5 input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                     <input type="password" required class="form-control" id="__password" name="__password" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-push-4 col-sm-5 input-group">
+                                <label>
+                                    <input type="checkbox" name="remember_me"> Запомнить меня
+                                </label>
                                 </div>
                             </div>
                             <div class="form-group">

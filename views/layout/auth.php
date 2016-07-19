@@ -24,6 +24,7 @@ if (!isset($title))
 
     <!-- Custom CSS -->
     <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+<!--    <link href="/dist/css/style.css" rel="stylesheet">-->
 
     <!-- Custom Fonts -->
     <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

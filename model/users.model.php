@@ -125,8 +125,9 @@ class Users extends Model
             $_SESSION['password'] = $this->password;
             if ($remember)
             {
-                setcookie("username",$this->username,60*60*24);
-                setcookie("password",$this->password,60*60*24);
+                setcookie("username",$this->username,time()+ 60*60*24, "/");
+                setcookie("password",$this->password,time()+ 60*60*24, "/");
+
             }
             self::$is_guest = false;
             return true;
