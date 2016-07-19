@@ -6,7 +6,7 @@
  * Time: 11:34
  */
 /* @var $content */
-
+//var_dump($_SESSION);
 if (!isset($title))
 {
     $title='Агентство Недвижимости';
@@ -30,17 +30,18 @@ if (System::get_message())
         }
     }
 }
-
+$disabled = '';
 if (System::get_user()->id === NULL)
 {
-    $user = '[Войти]';
+    $user = 'Войти';
     $link = "/auth/login";
     $role = 'Гость';
+    $disabled = 'disabled';
 }
 else
 {
-    $username = System::get_user()->username;
-    $user = "{$username}"." [Выйти]";
+    $id = System::get_user()->id;
+    $user = System::get_user()->username;
     $link = "/auth/logout";
     $role = Users::$roles[System::get_user()->role];
 }
@@ -88,9 +89,30 @@ else
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?=$link?>"><?=$user?></a>
+
             </div>
             <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <a class="navbar-brand" href="<?=$link?>">[<?=$user?>]</a>
+                <li class="dropdown <?=$disabled?>">
+
+                    <a class="dropdown-toggle <?=$disabled?>" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Профиль</a>
+                        </li>
+                        <li><a href="/users/edit/<?=$id?>"><i class="fa fa-gear fa-fw"></i> Настройки</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="<?=$link?>"><i class="fa fa-sign-out fa-fw"></i> Выйти</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">

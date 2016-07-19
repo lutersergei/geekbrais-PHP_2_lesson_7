@@ -67,6 +67,8 @@ class Users extends Model
         {
             $username = $_SESSION['username'];
             $password = $_SESSION['password'];
+
+//            die($password);
             $this->get_username($username);
             if ($this->password === $password)
             {

@@ -47,6 +47,7 @@ class System
             $result = $_POST;
             unset($result['__action']);
             unset($result['__password']);
+            unset($result['_password']);
             unset($result['id']);
             return $result;
         }
@@ -153,6 +154,12 @@ class System
                 if ($result === Model::UPDATE_FAILED)
                 {
                     $message = 'Ошибка при редактировании';
+                    static::set_message('error', $message);
+                    return true;
+                }
+                if ($result === Model::PASSWORD_INCORRECT)
+                {
+                    $message = Model::PASSWORD_INCORRECT;
                     static::set_message('error', $message);
                     return true;
                 }

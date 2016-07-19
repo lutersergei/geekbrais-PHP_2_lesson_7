@@ -16,6 +16,7 @@ class Model
     const CREATE_FAILED = "{CREATE_FAILED}";
     const DELETE_FAILED = "{DELETE_FAILED}";
     const DUPLICATE_FIELD = "{DUPLICATE_FIELD}";
+    const PASSWORD_INCORRECT = "Введенные Вами пароли не совпадают";
 
     protected static $errors = array(
         self::FIELD_NOT_EXIST,
@@ -294,6 +295,8 @@ class Model
             }
 
         }
+//        print_r($result);
+//        die();
         return $result;
     }
 
