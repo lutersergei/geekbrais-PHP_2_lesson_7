@@ -10,17 +10,25 @@ if (!isset($title))
 {
     $title='Агентство Недвижимости';
 }
-$message = NULL;
-if (System::get_message('success') !== NULL)
+if (System::get_message())
 {
-    $message = System::get_message('success');
-    $message_style = 'success';
+    $success = System::get_message('success');
+    if ($success !== NULL)
+    {
+        $message = $success;
+        $message_style = 'success';
+    }
+    else
+    {
+        $error = System::get_message('error');
+        if ($error !== NULL)
+        {
+            $message = $error;
+            $message_style = 'danger';
+        }
+    }
 }
-if (System::get_message('error') !== NULL)
-{
-    $message = System::get_message('error');
-    $message_style = 'danger';
-}
+
 if (System::get_user()->id === NULL)
 {
     $user = '[Войти]';
@@ -34,7 +42,6 @@ else
     $link = "/auth/logout";
     $role = Users::$roles[System::get_user()->role];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -108,7 +115,7 @@ else
         <div id="page-wrapper">
             <div class="container-fluid">
                 <?php
-                if ($message !== NULL)
+                if (isset($message))
                 {
                     ?>
                     <div class="alert alert-<?=$message_style?>">

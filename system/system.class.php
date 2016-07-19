@@ -54,20 +54,30 @@ class System
 
     public static function set_message($type, $message)
     {
-        $_SESSION[$type] = $message;
+        $_SESSION['notice'][$type] = $message;
     }
 
-    public static function get_message($type)
+    public static function get_message($type = NULL)
     {
-        if (isset($_SESSION[$type]))
+        if ($type === NULL)
         {
-            $value =$_SESSION[$type];
-            unset($_SESSION[$type]);
-            return $value;
+            if (isset($_SESSION['notice']))
+            {
+                return true;
+            }
         }
         else
         {
-             return NULL;
+            if (isset($_SESSION['notice'][$type]))
+            {
+                $value =$_SESSION['notice'][$type];
+                unset($_SESSION['notice']);
+                return $value;
+            }
+            else
+            {
+                return NULL;
+            }
         }
     }
 
