@@ -119,9 +119,9 @@ else
                     <ul class="nav" id="side-menu">
                         <li>
                             <pre class="text-uppercase text-center"><?=$role?></pre>
-                            <a href="/realty/index_and_add"><i class="fa fa-home fa-fw"></i>&nbsp; Объекты недвижимости</a>
-                            <a href="/wall/index_and_add"><i class="fa fa-th-list fa-fw"></i>&nbsp; Материалы стен</a>
-                            <a href="/realty_tags/index_and_add"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
+                            <a href="/realty/index"><i class="fa fa-home fa-fw"></i>&nbsp; Объекты недвижимости</a>
+                            <a href="/wall/index"><i class="fa fa-th-list fa-fw"></i>&nbsp; Материалы стен</a>
+                            <a href="/realty_tags/index"><i class="fa fa-tags fa-fw"></i>&nbsp; Теги</a>
                             <a href="/users/index"><i class="fa fa-users fa-fw"></i>&nbsp; Пользователи</a>
 
 

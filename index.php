@@ -46,7 +46,7 @@ if (isset($_GET['route']))
 else
 {
     $controller='realty';
-    $controller_action = 'index_and_add';
+    $controller_action = 'index';
     $request_id = NULL;
 }
 

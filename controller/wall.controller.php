@@ -18,7 +18,7 @@ class WallController extends Controller
         if (System::get_user()->id === NULL)
         {
             // запись в сессию страницы, с которой перешли на авторизацию
-            $_SESSION['last_page'] = '/wall/index_and_add';
+            $_SESSION['last_page'] = '/wall/index';
             header("Location:/auth/login");
         }
     }
@@ -27,7 +27,7 @@ class WallController extends Controller
     {
         if ($id === NULL)
         {
-            header('Location:/wall/index_and_add');
+            header('Location:/wall/index');
             die();
         }
 
@@ -41,7 +41,7 @@ class WallController extends Controller
                 $result = $wall->update();
                 if (System::create_message('update',$result))
                 {
-                    header('Location:/wall/index_and_add');
+                    header('Location:/wall/index');
                     die();
                 }
             }
@@ -56,7 +56,7 @@ class WallController extends Controller
     {
         if ($id === NULL)
         {
-            header('Location:/wall/index_and_add');
+            header('Location:/wall/index');
             die();
         }
 //Проверка на пост запрос об удалении записи
@@ -69,13 +69,13 @@ class WallController extends Controller
                 $result = $wall->delete();
                 if (System::create_message('delete',$result))
                 {
-                    header('Location:/wall/index_and_add');
+                    header('Location:/wall/index');
                     die();
                 }
             }
             else
             {
-                header('Location:/wall/index_and_add');
+                header('Location:/wall/index');
                 die();
             }
         }
@@ -87,17 +87,22 @@ class WallController extends Controller
     {
         if ($id === NULL)
         {
-            header('Location:/wall/index_and_add');
+            header('Location:/wall/index');
             die();
         }
         $wall = new Wall($id);
         return $this->render("wall_types/preview_types", ['wall' => $wall]);
     }
 
-    public function wall_index_and_add()
+    public function wall_index()
     {
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
+        return $this->render("wall_types/wall_types", ['walls' => $walls]);
+    }
+
+    public function wall_add()
+    {
         //Проверка на пост запрос о добавлении новой записи
         if (isset($_POST['__action'])) {
             if ($_POST['__action'] === 'add') {
@@ -106,11 +111,11 @@ class WallController extends Controller
                 $result = $wall->add();
                 if (System::create_message('add',$result))
                 {
-                    header('Location:/wall/index_and_add');
+                    header('Location:/wall/index');
                     die();
                 }
             }
         }
-        return $this->render("wall_types/wall_types", ['walls' => $walls]);
+        return $this->render("wall_types/add", []);
     }
 }

@@ -14,7 +14,7 @@ $title="Удаление материала"." - ".$material;
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li><a href="/wall/index_and_add">Материалы стен</a></li>
+                        <li><a href="/wall/index">Материалы стен</a></li>
                         <li class="active">Удаление материала</li>
                     </ol>
                     <h1 class="page-header">Lesson_1. Объекты недвижимости.</h1>

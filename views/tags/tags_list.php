@@ -65,36 +65,9 @@ HTML;
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Добавление нового тега
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <form method="post" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="room" class="col-sm-2 control-label">Название</label>
-                                <div class="col-sm-3">
-                                    <input type="text" required class="form-control" id="title" name="title" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <input type="hidden" name="__action" value="add">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Добавить</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
+                <hr>
+                <a href="/realty_tags/add" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить</a>
+                <hr>
             </div>
             <!-- /.col-lg-12 -->
         </div>

@@ -9,7 +9,7 @@ $title="Удаление тега - $tag_title";
         <div class="row">
             <div class="col-lg-12">
                 <ol class="breadcrumb">
-                    <li><a href="/realty_tags/index_and_add">Список тегов</a></li>
+                    <li><a href="/realty_tags/index">Список тегов</a></li>
                     <li class="active">Удаление тега</li>
                 </ol>
                 <h1 class="page-header">БД недвижимости</h1>

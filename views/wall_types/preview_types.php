@@ -10,7 +10,7 @@ $title="Просмотр материала - $material";
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li><a href="/wall/index_and_add">Материалы стен</a></li>
+                        <li><a href="/wall/index">Материалы стен</a></li>
                         <li class="active">Просмотр материала</li>
                     </ol>
                     <h1 class="page-header">БД недвижимости</h1>

@@ -13,7 +13,7 @@ $description = $realty->description;
             <div class="row">
                 <div class="col-lg-12">
                     <ol class="breadcrumb">
-                        <li><a href="/realty/index_and_add">Список недвижимости и добавление</a></li>
+                        <li><a href="/realty/index">Список недвижимости и добавление</a></li>
                         <li class="active">Изменение помещения</li>
                     </ol>
                     <h1 class="page-header">БД недвижимости</h1>

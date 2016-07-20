@@ -24,7 +24,7 @@ class RealtyController extends Controller
     {
         if ($id === NULL)
         {
-            header('Location:/realty/index_and_add');
+            header('Location:/realty/index');
             die();
         }
 
@@ -40,7 +40,7 @@ class RealtyController extends Controller
                 $result = $realty->update();
                 if (System::create_message('update',$result))
                 {
-                    header('Location:/realty/index_and_add');
+                    header('Location:/realty/index');
                     die();
                 }
             }
@@ -84,7 +84,7 @@ class RealtyController extends Controller
     {
         if ($id === NULL)
         {
-            header('Location:/realty/index_and_add');
+            header('Location:/realty/index');
             die();
         }
 
@@ -97,11 +97,11 @@ class RealtyController extends Controller
                 $result = $realty->delete();
                 if (System::create_message('delete',$result))
                 {
-                    header('Location:/realty/index_and_add');
+                    header('Location:/realty/index');
                     die();
                 }
             }
-            header('Location:/realty/index_and_add');
+            header('Location:/realty/index');
         }
         $realty = new Realty($id);
 
@@ -112,7 +112,7 @@ class RealtyController extends Controller
     {
         if ($id === NULL)
         {
-            header('Location:/realty/index_and_add');
+            header('Location:/realty/index');
             die();
         }
 
@@ -125,22 +125,8 @@ class RealtyController extends Controller
     }
 
 
-    public function realty_index_and_add()
+    public function realty_index()
     {
-        //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['__action'])) {
-            if ($_POST['__action'] === 'add')
-            {
-                $realty = new Realty();
-                $realty->load(System::post());
-                $result = $realty->add();
-                if (System::create_message('add',$result))
-                {
-                    header('Location:/realty/index_and_add');
-                    die();
-                }
-            }
-        }
         //Запрашиваем все значения из таблицы Недвижимость
 //        $time_start = microtime(true);
 //        for ($i=1; $i<10000; $i++)
@@ -152,43 +138,47 @@ class RealtyController extends Controller
 //        $time_end = microtime(true);
 //        $time = $time_end - $time_start;
 //        var_dump($time);
+
+        return $this->render("realty/index", ['realty' => $realty]);
+    }
+
+    public function realty_add()
+    {
+        //Проверка на пост запрос о добавлении новой записи
+        if (isset($_POST['__action']))
+        {
+            if ($_POST['__action'] === 'add')
+            {
+                $realty = new Realty();
+                $realty->load(System::post());
+                $result = $realty->add();
+                if (System::create_message('add',$result))
+                {
+                    header('Location:/realty/index');
+                    die();
+                }
+            }
+        }
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
         $walls = ArrayHelper::index($walls, 'id');
-        return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls ]);
+        return $this->render("realty/add", ['walls' => $walls ]);
     }
-    
+
     public function realty_group_by_wall($wall_id = NULL)
     {
         if ($wall_id === NULL)
         {
-            header('Location:/realty/index_and_add');
+            header('Location:/realty/index');
             die();
         }
+
         $realty = Realty::load_wall_group($wall_id);
 
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
         $walls = ArrayHelper::index($walls, 'id');
 
-        //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['__action']))
-        {
-            if ($_POST['__action'] === 'add')
-            {
-                if ($_POST['__action'] === 'add')
-                {
-                    $realty = new Realty();
-                    $realty->load(System::post());
-                    $result = $realty->add();
-                    if (System::create_message('add',$result))
-                    {
-                        header('Location:/realty/index_and_add');
-                        die();
-                    }
-            }
-            }
-        }
         return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls]);
     }
 
@@ -196,32 +186,15 @@ class RealtyController extends Controller
     {
         if ($tag_id === NULL)
         {
-            header('Location:/realty/index_and_add');
+            header('Location:/realty/index');
             die();
         }
+
         $realty = Realty::load_tag_group($tag_id);
 
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
 
-        //Проверка на пост запрос о добавлении новой записи
-        if (isset($_POST['__action']))
-        {
-            if ($_POST['__action'] === 'add')
-            {
-                if ($_POST['__action'] === 'add')
-                {
-                    $realty = new Realty();
-                    $realty->load(System::post());
-                    $result = $realty->add();
-                    if (System::create_message('add',$result))
-                    {
-                        header('Location:/realty/index_and_add');
-                        die();
-                    }
-                }
-            }
-        }
         return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls]);
     }
 }
