@@ -155,7 +155,7 @@ class RealtyController extends Controller
         //Запрашиваем все значения из таблицы Типы_Стен
         $walls = Wall::all();
         $walls = ArrayHelper::index($walls, 'id');
-        return $this->render("realty/index", ['realty' => $realty, 'wall' => $walls ]);
+        return $this->render("realty/index", ['realty' => $realty, 'walls' => $walls ]);
     }
     
     public function realty_group_by_wall($wall_id = NULL)

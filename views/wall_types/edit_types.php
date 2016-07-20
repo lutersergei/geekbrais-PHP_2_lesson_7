@@ -35,7 +35,6 @@ $title="Изменение материала"." - ".$material;
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     <?php echo <<<HTML
                                         <form method="post" action="">
                                             <tr>                                        
@@ -48,7 +47,6 @@ $title="Изменение материала"." - ".$material;
                                          </form>
 HTML;
 ?>
-
                                     </tbody>
                                 </table>
                             </div>

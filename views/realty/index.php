@@ -7,8 +7,6 @@
  */
 $title="Агентство недвижимости";
 ?>
-
-
 <div class="row">
     <div class="col-lg-12">
         <ol class="breadcrumb">
@@ -103,7 +101,7 @@ HTML;
                             <select name="wall_id" class="form-control">
 
                                 <?php
-                                foreach ($wall as $w) {
+                                foreach ($walls as $w) {
                                     echo <<<HTML
            <option value="{$w->id}">{$w->material}</option>
 HTML;
