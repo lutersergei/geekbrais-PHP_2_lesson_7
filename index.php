@@ -8,7 +8,7 @@ require_once ('system/helpers/array.helper.php');
 require_once('system/model.class.php');
 require_once('model/wall.model.php');
 require_once('model/realty.model.php');
-require_once ('model/realty_tags.model.php');
+require_once ('model/tag.model.php');
 require_once ('model/users.model.php');
 require_once ('functions.php');
 

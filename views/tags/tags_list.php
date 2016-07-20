@@ -48,8 +48,8 @@ $title="Список тегов";
                                             <td>{$tag->count}</td> 
                                             <td>
                                             <div class="btn-group" role="group">
-                                            <a href="/realty_tags/edit/{$tag->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
-                                            <a href="/realty_tags/delete/{$tag->id}"  class="btn btn-default $disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
+                                            <a href="/tag/edit/{$tag->id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
+                                            <a href="/tag/delete/{$tag->id}"  class="btn btn-default $disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
                                             </div>
                                             </td>
                                             </tr>
@@ -66,7 +66,7 @@ HTML;
                 </div>
                 <!-- /.panel -->
                 <hr>
-                <a href="/realty_tags/add" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить</a>
+                <a href="/tag/add" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить</a>
                 <hr>
             </div>
             <!-- /.col-lg-12 -->
