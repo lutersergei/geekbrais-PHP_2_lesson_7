@@ -21,4 +21,31 @@ class ProfileController extends Controller
             header("Location:/auth/login");
         }
     }
+
+    public function profile_edit($id)
+    {
+        if ($id === NULL)
+        {
+            header('Location:/users/index');
+            die();
+        }
+
+        if (isset($_POST['__action']))
+        {
+            if ($_POST['__action'] === 'edit')
+            {
+                $profile = new Profile($id);
+                $profile->load(System::post());
+                $result = $profile->update();
+                if (System::create_message('update',$result))
+                {
+                    header("Location:/users/profile/$profile->user_id");
+                    die();
+                }
+            }
+        }
+
+        $profile = new Profile($id);
+        return $this->render("users/users_edit", ['profile' => $profile]);
+    }
 }

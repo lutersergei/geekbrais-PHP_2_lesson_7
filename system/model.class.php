@@ -283,6 +283,7 @@ class Model
         $result = '';
         foreach($fields as $f)
         {
+//            var_dump($this->data);
             if ($result !== '') $result .= ', ';
 
             if ((isset($this->data[$f]))&&($this->data[$f]!==NULL))
@@ -292,6 +293,7 @@ class Model
             else
             {
                 $result .= "`{$f}` = NULL";
+                print_r($result);
             }
 
         }

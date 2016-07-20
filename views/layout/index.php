@@ -65,6 +65,7 @@ else
 
     <!-- Custom CSS -->
     <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/dist/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -103,7 +104,7 @@ else
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="/users/profile/<?=$id?>"><i class="fa fa-user fa-fw"></i> Профиль</a>
                         </li>
-                        <li><a href="/users/edit/<?=$id?>"><i class="fa fa-gear fa-fw"></i> Настройки</a>
+                        <li><a href="/users/setting/<?=$id?>"><i class="fa fa-gear fa-fw"></i> Настройки</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="<?=$link?>"><i class="fa fa-sign-out fa-fw"></i> Выйти</a>

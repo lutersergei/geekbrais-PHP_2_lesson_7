@@ -1,65 +1,66 @@
 <?php
-$title="Редактирование пользователя";
+/**
+ * Created by PhpStorm.
+ * User: drKox
+ * Date: 20.07.2016
+ * Time: 23:21
+ */
+$title = 'Редактирование профиля пользователя';
 ?>
 <div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Редактирование пользователя
+    <ol class="breadcrumb">
+        <li><a href="/users/index">Список пользователей</a></li>
+        <li><a href="/users/profile/<?=$profile->user_id?>">Профиль пользователя</a></li>
+        <li class="active">Редактирование профиля пользователя</li>
+    </ol>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Профиль пользователя</strong></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="/img/avatar.png" alt="avatar" class="img-circle img-responsive">
             </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
+            <div class="profile col-sm-9 col-md-8 col-lg-7">
                 <form method="post" class="form-horizontal">
                     <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">Имя пользователя</label>
-                        <div class="col-sm-3 input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" required class="form-control" id="username" name="username" value="<?=$users->username?>">
+                        <label for="name" class="col-sm-3 control-label">Имя</label>
+                        <div class="col-sm-4">
+                            <input type="text" required class="form-control" value="<?=$profile->name?>" id="name" name="name" >
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="last__password" class="col-sm-2 control-label">Новый пароль</label>
-                        <div class="col-sm-3 input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" id="_password" name="_password" >
+                        <label for="surname" class="col-sm-3 control-label">Фамилия</label>
+                        <div class="col-sm-4">
+                            <input type="text" required class="form-control" value="<?=$profile->surname?>" id="surname" name="surname">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="__password" class="col-sm-2 control-label">Повторите пароль</label>
-                        <div class="col-sm-3 input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" id="__password" name="__password" >
+                        <label for="middlename" class="col-sm-3 control-label">Отчество</label>
+                        <div class="col-sm-4">
+                            <input type="text" required class="form-control" value="<?=$profile->middlename?>" id="middlename" name="middlename">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="role" class="col-sm-2 control-label">Роль пользователя</label>
-                        <div class="col-sm-3 input-group">
-                            <select  class="form-control" name="role" id="role">
-                                <?php
-                                foreach (Users::$roles as $key=>$role)
-                                {
-                                    $select=false;
-                                    if ($users->role == $key) $select="selected";
-                                    ?>
-                                    <option <?= $select ?> value="<?= $key ?>"> <?= $role ?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
+                        <label for="age" class="col-sm-3 control-label">Возраст</label>
+                        <div class="col-sm-4">
+                            <input type="number" required class="form-control" value="<?=$profile->age?>" id="age" name="age">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <label for="about_me" class="col-sm-3 control-label">О себе</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="about_me" name="about_me" rows="4"><?=$profile->about_me?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
                             <input type="hidden" name="__action" value="edit">
-                            <button type="submit" class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i> Изменить</button>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Изменить</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- /.panel-body -->
         </div>
-        <!-- /.panel -->
     </div>
-    <!-- /.col-lg-12 -->
 </div>
-<!-- /.row -->
