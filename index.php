@@ -10,6 +10,7 @@ require_once('model/wall.model.php');
 require_once('model/realty.model.php');
 require_once ('model/tag.model.php');
 require_once ('model/users.model.php');
+require_once ('model/profile.model.php');
 require_once ('functions.php');
 
 spl_autoload_register('class_autoload');

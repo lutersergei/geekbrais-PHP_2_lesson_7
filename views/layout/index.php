@@ -101,7 +101,7 @@ else
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Профиль</a>
+                        <li><a href="/users/profile/<?=$id?>"><i class="fa fa-user fa-fw"></i> Профиль</a>
                         </li>
                         <li><a href="/users/edit/<?=$id?>"><i class="fa fa-gear fa-fw"></i> Настройки</a>
                         </li>

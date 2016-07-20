@@ -2,7 +2,6 @@
 <?php
 $title="Пользователи";
 ?>
-
 <!-- Page Content -->
         <div class="row">
             <div class="col-lg-12">

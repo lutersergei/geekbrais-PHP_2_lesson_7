@@ -39,6 +39,10 @@ class UsersController extends Controller
             {
                 $password = $_POST['__password'];
                 $users = new Users();
+                $user_profile = new Profile();
+                $user_profile->add();
+                $profile_id = $user_profile->id;
+                $users->profile_id = $profile_id;
                 $users->load(System::post());
                 $users->create_password($password);
                 $result = $users->add();
@@ -109,5 +113,17 @@ class UsersController extends Controller
 
         $users = new Users($id);
         return $this->render("users/users_edit", ['users' => $users]);
+    }
+
+    public function users_profile($id = NULL)
+    {
+        if ($id === NULL)
+        {
+            header('Location:/users/index');
+            die();
+        }
+
+        $users = new Users($id);
+        return $this->render("users/users_profile", ['users' => $users]);
     }
 }

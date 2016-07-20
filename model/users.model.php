@@ -8,9 +8,14 @@ class Users extends Model
         self::ROLE_USER => 'Пользватель',
         self::ROLE_ADMIN => 'Администратор'
     ];
-    
+
     protected static $behaviours = [
-        '' => []
+        'profile' =>
+            [
+                'key' => 'profile_id',
+                'class' => 'Profile',
+                'type' => 'one'
+            ]
     ];
 
     protected static $is_guest = true;
