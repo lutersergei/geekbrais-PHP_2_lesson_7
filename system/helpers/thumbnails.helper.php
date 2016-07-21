@@ -7,7 +7,7 @@
  */
 Class ThumbnailsHelper
 {
-    public function makeThumbnails($updir, $img, $id,$MaxWe=500,$MaxHe=400)
+    public static function makeThumbnails($updir, $img, $id,$MaxWe=500,$MaxHe=400)
     {
         $arr_image_details = getimagesize($img);
         $width = $arr_image_details[0];
