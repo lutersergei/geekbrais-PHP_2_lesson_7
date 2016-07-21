@@ -6,13 +6,20 @@
  * Time: 23:21
  */
 $title = 'Редактирование профиля пользователя';
+if ($profile->age === 0)
+{
+    $age = '';
+}
+else $age = $profile->age;
 ?>
 <div class="row">
-    <ol class="breadcrumb">
-        <li><a href="/users/index">Список пользователей</a></li>
-        <li><a href="/users/profile/<?=$profile->user_id?>">Профиль пользователя</a></li>
-        <li class="active">Редактирование профиля пользователя</li>
-    </ol>
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="/users/index">Список пользователей</a></li>
+            <li><a href="/users/profile/<?=$users->id?>">Профиль пользователя</a></li>
+            <li class="active">Редактирование профиля пользователя</li>
+        </ol>
+    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">Профиль пользователя</strong></div>
@@ -44,7 +51,7 @@ $title = 'Редактирование профиля пользователя';
                     <div class="form-group">
                         <label for="age" class="col-sm-3 control-label">Возраст</label>
                         <div class="col-sm-4">
-                            <input type="number" required class="form-control" value="<?=$profile->age?>" id="age" name="age">
+                            <input type="number" required class="form-control" value="<?=$age?>" id="age" name="age">
                         </div>
                     </div>
                     <div class="form-group">

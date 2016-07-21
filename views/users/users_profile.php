@@ -6,12 +6,19 @@
  * Time: 17:21
  */
 $title = 'Профиль пользователя';
+if ($users->profile->age === 0)
+{
+    $age = '';
+}
+else $age = $users->profile->age;
 ?>
 <div class="row">
-    <ol class="breadcrumb">
-        <li><a href="/users/index">Список пользователей</a></li>
-        <li class="active">Профиль пользователя</li>
-    </ol>
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="/users/index">Список пользователей</a></li>
+            <li class="active">Профиль пользователя</li>
+        </ol>
+    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">Профиль пользователя - <strong>[<?=$users->username?>]</strong></div>
@@ -29,7 +36,7 @@ $title = 'Профиль пользователя';
                     <dt>Отчество</dt>
                     <dd><?=$users->profile->middlename?></dd>
                     <dt>Возраст</dt>
-                    <dd><?=$users->profile->age?></dd>
+                    <dd><?=$age?></dd>
                     <dt>О себе</dt>
                     <dd><?=$users->profile->about_me?></dd>
                     <dd>
