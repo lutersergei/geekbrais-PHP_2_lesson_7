@@ -351,10 +351,15 @@ class Model
     }
 
 
-    public function one($id)
+    public function one($id, $field = NULL)
     {
         $id = (int) $id;
-        $query = "SELECT * FROM `".static::tableName()."` WHERE `id` = '{$id}'";
+        if ($field == NULL)
+        {
+            $field = 'id';
+        }
+        $query = "SELECT * FROM `".static::tableName()."` WHERE `{$field}` = '{$id}'";
+//        die($query);
         $result = mysqli_query(self::get_db(),$query);
         if ($row = mysqli_fetch_assoc($result))
         {
