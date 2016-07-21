@@ -11,11 +11,16 @@ if ($users->profile->age === 0)
     $age = '';
 }
 else $age = $users->profile->age;
+if ($users->profile->avatar == NULL)
+{
+    $avatar = '/img/avatar.png';
+}
+else $avatar = '/'.$users->profile->avatar;
 ?>
 <div class="row">
     <div class="col-lg-12">
         <ol class="breadcrumb">
-            <li><a href="/users/index">Список пользователей</a></li>
+            <li><a href="/users/index">Пользователи</a></li>
             <li class="active">Профиль пользователя</li>
         </ol>
     </div>
@@ -25,7 +30,7 @@ else $age = $users->profile->age;
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-2">
-                <img src="/img/avatar.png" alt="avatar" class="img-circle img-responsive">
+                <img src="<?=$avatar?>" alt="avatar" class="img-circle img-responsive">
             </div>
             <div class="profile col-sm-9 col-md-8 col-lg-7">
                 <dl class="dl-horizontal">
