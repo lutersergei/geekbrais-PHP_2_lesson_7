@@ -15,7 +15,12 @@ if ($profile->avatar == NULL)
 {
     $avatar = '/img/avatar.png';
 }
-else $avatar = '/'.$profile->avatar;
+else
+{
+    $avatar = '/'.$profile->avatar;
+    $full_image = '/'.$profile->full_avatar;
+
+}
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -31,7 +36,9 @@ else $avatar = '/'.$profile->avatar;
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-2">
-                <img src="<?=$avatar?>" alt="avatar" class="img-circle img-responsive">
+                <a class="thumbnail" href="<?=$full_image?>">
+                    <img src="<?=$avatar?>" alt="avatar" class=" img-responsive">
+                </a>
             </div>
             <div class="profile col-sm-9 col-md-8 col-lg-7">
                 <form method="post" class="form-horizontal" enctype="multipart/form-data">

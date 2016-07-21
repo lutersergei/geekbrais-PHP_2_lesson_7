@@ -63,11 +63,12 @@ class ProfileController extends Controller
                                     move_uploaded_file($file_temp_name, $file_path);
                                     ThumbnailsHelper::makeThumbnails(THUMBNAILS_FOLDER ,$file_path, $file_translit_name); //TODO Сделать квадратные превьюшки
                                     $profile->avatar = $file_thumb_path;
+                                    $profile->full_avatar = $file_path;
                                     $result = $profile->update();
                                     if (System::create_message('update',$result))
                                     {
-                                        header("Location:/users/profile/$users->id");
-                                        die();
+//                                        header("Location:/users/profile/$users->id");
+//                                        die();
                                     }
                                 }
                                 else
@@ -98,6 +99,7 @@ class ProfileController extends Controller
                 }
                 $profile->load(System::post());
                 $result = $profile->update();
+                //TODO Раздельные сообщения для ошибки/успешности педактирования инфы/аватарки
                 if (System::create_message('update',$result))
                 {
                     header("Location:/users/profile/$users->id");

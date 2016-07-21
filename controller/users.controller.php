@@ -129,4 +129,36 @@ class UsersController extends Controller
         $users = new Users($id);
         return $this->render("users/users_profile", ['users' => $users]);
     }
+
+    public function users_delete($id = NULL)
+    {
+        if ($id === NULL)
+        {
+            header('Location:/users/index');
+            die();
+        }
+
+//Проверка на пост запрос об удалении записи
+        if (isset($_POST['__action'])) {
+            if ($_POST['__action'] === 'delete')
+            {
+                $id = (int) $_POST['id'];
+                $users = new Users($id);
+                $profile_id = $users->profile_id;
+                $result = $users->delete();
+                $profile = new Profile($profile_id);
+                $profile->delete();
+                //TODO Раздельные сообщения для ошибки удаления пользователя/профиля
+                if (System::create_message('delete',$result))
+                {
+                    header('Location:/users/index');
+                    die();
+                }
+            }
+            header('Location:/users/index');
+        }
+        $users = new Users($id);
+
+        return $this->render("users/users_delete", ['users' => $users]);
+    }
 }

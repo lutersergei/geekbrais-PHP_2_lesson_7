@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: drKox
- * Date: 20.07.2016
- * Time: 17:21
+ * Date: 21.07.2016
+ * Time: 22:28
  */
-$title = 'Профиль пользователя';
+$title = 'Удаление профиля пользователя';
 if ($users->profile->age === 0)
 {
     $age = '';
@@ -15,11 +15,7 @@ if ($users->profile->avatar == NULL)
 {
     $avatar = '/img/avatar.png';
 }
-else
-{
-    $avatar = '/'.$users->profile->avatar;
-    $full_image = '/'.$users->profile->full_avatar;
-}
+else $avatar = '/'.$users->profile->avatar;
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -34,9 +30,7 @@ else
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-2">
-                <a class="thumbnail" href="<?=$full_image?>">
-                    <img src="<?=$avatar?>" alt="avatar" class=" img-responsive">
-                </a>
+                <img src="<?=$avatar?>" alt="avatar" class="img-circle img-responsive">
             </div>
             <div class="profile col-sm-9 col-md-8 col-lg-7">
                 <dl class="dl-horizontal">
@@ -50,12 +44,18 @@ else
                     <dd><?=$age?></dd>
                     <dt>О себе</dt>
                     <dd><?=$users->profile->about_me?></dd>
-                    <dd>
-                        <hr>
-                        <a href="/profile/edit/<?=$users->profile_id?>"  class="btn btn-default btn"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
-                    </dd>
                 </dl>
             </div>
         </div>
     </div>
+</div>
+<div>
+    <form action="" method="post">
+        <h3 class="text-center text-uppercase"><strong>Вы действительно хотите удалить данного пользователя?</strong></h3>
+        <div class="well center-block" style="max-width:250px">
+            <input type="hidden" name="id" value="<?=$users->id?>">
+            <button type="submit" name="__action" value="decline" class="btn btn-default btn-lg btn-block"><i class="fa fa-undo fa-lg" aria-hidden="true"></i> Отмена</button>
+            <button type="submit" name="__action" value="delete" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Удалить</button>
+        </div>
+    </form>
 </div>

@@ -11,35 +11,34 @@ $price = $realty->price;
 $description = $realty->description;
 ?>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <ol class="breadcrumb">
-                        <li><a href="/realty/index">Список недвижимости и добавление</a></li>
-                        <li class="active">Удаление помещения</li>
-                    </ol>
-                    <h1 class="page-header">БД недвижимости</h1>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Просмотр записи
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-condensed">
-                                    <thead>
-                                    <tr>
-                                        <th>Комнат</th>
-                                        <th>Этаж</th>
-                                        <th>Адресс</th>
-                                        <th>Материал стен</th>
-                                        <th>Площадь, м<sup>2</sup></th>
-                                        <th>Цена, <i class="fa fa-rub" aria-hidden="true"></i> </th>
-                                        <th>Описание</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <?php echo <<<HTML
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li><a href="/realty/index">Список недвижимости и добавление</a></li>
+            <li class="active">Удаление помещения</li>
+        </ol>
+        <h1 class="page-header">БД недвижимости</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Просмотр записи
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Комнат</th>
+                            <th>Этаж</th>
+                            <th>Адресс</th>
+                            <th>Материал стен</th>
+                            <th>Площадь, м<sup>2</sup></th>
+                            <th>Цена, <i class="fa fa-rub" aria-hidden="true"></i> </th>
+                            <th>Описание</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php echo <<<HTML
 <tr>
                                             <td>{$rooms}</td>
                                             <td>{$floor}</td>
@@ -50,29 +49,26 @@ $description = $realty->description;
                                             <td>{$description}</td> 
                                             </tr>                                       
 HTML;
-                                    
-                                    ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div>
-                        <form action="" method="post">
-                            <h3 class="text-center text-uppercase"><strong>Вы действительно хотите удалить данную запись?</strong></h3>
-                            <div class="well center-block" style="max-width:250px">
-                                <input type="hidden" name="id" value="<?=$id?>">
-                                <button type="submit" name="__action" value="decline" class="btn btn-default btn-lg btn-block"><i class="fa fa-undo fa-lg" aria-hidden="true"></i> Отмена</button>
-                                <button type="submit" name="__action" value="delete" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Удалить</button>
-                            </div>
-                        </form>
-                    </div>
-
-
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.table-responsive -->
             </div>
-            <!-- /.row -->
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+        <div>
+            <form action="" method="post">
+                <h3 class="text-center text-uppercase"><strong>Вы действительно хотите удалить данную запись?</strong></h3>
+                <div class="well center-block" style="max-width:250px">
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <button type="submit" name="__action" value="decline" class="btn btn-default btn-lg btn-block"><i class="fa fa-undo fa-lg" aria-hidden="true"></i> Отмена</button>
+                    <button type="submit" name="__action" value="delete" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Удалить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

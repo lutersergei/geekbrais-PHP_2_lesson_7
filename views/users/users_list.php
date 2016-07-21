@@ -33,9 +33,9 @@ $title="Пользователи";
                                 <td><?= Users::$roles[$user->role] ?></td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="../index.php?cat=users&view=preview&id=<?= $user->id ?>" class="btn btn-default disabled"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотр</a>
-                                        <a href="../index.php?cat=users&view=edit&id=<?= $user->id ?>" class="btn btn-default disabled"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
-                                        <a href="../index.php?cat=users&view=delete&id=<?= $user->id ?>"  class="btn btn-default disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
+                                        <a href="/users/profile/<?= $user->id ?>" class="btn btn-default "><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотр</a>
+                                        <a href="/profile/edit/<?= $user->profile_id ?>" class="btn btn-default "><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактирование</a>
+                                        <a href="/users/delete/<?= $user->id ?>"  class="btn btn-default "><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удаление</a>
                                     </div>
                                 </td>
                             </tr>
