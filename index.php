@@ -5,6 +5,8 @@ require_once ('initial.php');
 require_once ('system/system.class.php');
 require_once ('system/controller.class.php');
 require_once ('system/helpers/array.helper.php');
+require_once ('system/helpers/thumbnails.helper.php');
+require_once ('system/helpers/translit.helper.php');
 require_once('system/model.class.php');
 require_once('model/wall.model.php');
 require_once('model/realty.model.php');
@@ -12,7 +14,6 @@ require_once ('model/tag.model.php');
 require_once ('model/users.model.php');
 require_once ('model/profile.model.php');
 require_once ('functions.php');
-
 spl_autoload_register('class_autoload');
 
 if (isset($_GET['route']))
