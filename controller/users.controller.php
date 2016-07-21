@@ -46,9 +46,9 @@ class UsersController extends Controller
                 $users->load(System::post());
                 $users->create_password($password);
                 $result = $users->add();
-                $profile = new Profile($profile_id);
-                $profile->user_id = $users->id;
-                $profile->update();
+//                $profile = new Profile($profile_id);
+//                $profile->user_id = $users->id;
+//                $profile->update();
                 if (System::create_message('add',$result))
                 {
                     header('Location:/users/index');

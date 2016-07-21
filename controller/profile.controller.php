@@ -30,6 +30,9 @@ class ProfileController extends Controller
             die();
         }
 
+        $users = new Users();
+        $users->one($id, 'profile_id');
+
         if (isset($_POST['__action']))
         {
             if ($_POST['__action'] === 'edit')
@@ -39,13 +42,14 @@ class ProfileController extends Controller
                 $result = $profile->update();
                 if (System::create_message('update',$result))
                 {
-                    header("Location:/users/profile/$profile->user_id");
+                    header("Location:/users/profile/$users->id");
                     die();
                 }
             }
         }
 
         $profile = new Profile($id);
-        return $this->render("users/users_edit", ['profile' => $profile]);
+
+        return $this->render("users/users_edit", ['profile' => $profile, 'users' => $users]);
     }
 }
